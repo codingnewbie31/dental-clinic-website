@@ -1,33 +1,22 @@
 @import "tailwindcss";
 
-:root {
-  /* Default light mode variables */
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  /* Wire up Tailwind's background/foreground utilities */
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  
-  /* Link Tailwind's default sans font to our custom property */
-  --font-sans: var(--font-inter);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Dark mode variables automatically toggle via media queries */
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@theme {
+  --color-clinic-ivory: #faf9f6;
+  --color-clinic-charcoal: #1e2a28;
+  --color-clinic-teal: #2f6f62;
+  --color-clinic-teal-dark: #234f45;
+  --color-clinic-sage: #dce8e2;
+  --color-clinic-sand: #c9a66b;
 }
 
 body {
-  /* Uses your theme's custom background and foreground colors */
-  background: var(--background);
-  color: var(--foreground);
-  
-  /* IMPORTANT: Apply the Tailwind variable we pass from layout.tsx */
-  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  background: var(--color-clinic-ivory);
+  color: var(--color-clinic-charcoal);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+.font-body {
+  font-family: var(--font-body);
 }

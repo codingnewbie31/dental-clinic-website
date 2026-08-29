@@ -1,12 +1,21 @@
+import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
-import { Inter } from "next/font/google";
 import Navbar from "./components/layout/Navbar";
 
-const inter = Inter({ subsets: ["latin"] });
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-display",
+  weight: ["500", "600"],
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-body",
+});
 
 export const metadata = {
   title: "Dental Clinic",
-  description: "Premium Dental Care",
+  description: "Premium dental care, made simple.",
 };
 
 export default function RootLayout({
@@ -16,9 +25,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body
+        className={`${fraunces.variable} ${inter.variable} font-body bg-clinic-ivory text-clinic-charcoal antialiased`}
+      >
         <Navbar />
-        {children}
+        <main className="pt-20">{children}</main>
       </body>
     </html>
   );
