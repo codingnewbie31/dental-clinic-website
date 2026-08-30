@@ -2,7 +2,7 @@
 
 import { motion, Variants } from "framer-motion";
 import Link from "next/link";
-import { servicesData } from "@/app/data/Services";
+import { servicesData } from "@/app/lib/data/Services";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -56,7 +56,7 @@ export default function ServicesSection() {
               everyone
               <svg
                 viewBox="0 0 120 20"
-                className="absolute -bottom-2 left-0 h-3 w-full text-clinic-sand"
+                className="absolute -bottom-2 left-0 h-3 w-full text-clinic-teal"
                 preserveAspectRatio="none"
               >
                 <path
@@ -94,12 +94,12 @@ export default function ServicesSection() {
             >
               <Link href={`/services/${service.slug}`} className="block">
                 {/* Icon with teal */}
-                <div className="h-14 w-14 rounded-xl bg-clinic-teal/10 flex items-center justify-center text-3xl mb-5 group-hover:bg-clinic-teal/20 transition-colors">
+                <div className="h-14 w-14 rounded-xl bg-clinic-teal flex items-center justify-center text-3xl mb-5 group-hover:bg-clinic-teal-dark transition-colors">
                   {service.icon}
                 </div>
 
                 {/* Title */}
-                <h3 className="font-display text-xl font-semibold text-clinic-charcoal group-hover:text-clinic-teal transition-colors">
+                <h3 className="font-display text-xl font-semibold text-clinic-charcoal group-hover:text-clinic-teal-dark transition-colors">
                   {service.title}
                 </h3>
 

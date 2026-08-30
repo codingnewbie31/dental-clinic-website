@@ -1,32 +1,59 @@
 "use client";
 
-import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { testimonialsData } from "@/app/lib/data/testimonials";
+import Link from "next/link";
 
-export default function TestimonialsPage() {
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.22, 1, 0.36, 1] as const,
+    },
+  },
+};
+
+// Show only first 3 testimonials on homepage
+const previewTestimonials = testimonialsData.slice(0, 3);
+
+export default function TestimonialsSection() {
   return (
     <section className="py-24 bg-clinic-ivory">
-      <div className="mx-auto max-w-4xl px-6">
-        {/* Header */}
+      <div className="mx-auto max-w-6xl px-6">
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
+          {/* Teal accent line */}
           <div className="flex justify-center mb-4">
             <div className="w-12 h-1 bg-clinic-teal rounded-full" />
           </div>
 
           <p className="text-sm font-medium uppercase tracking-widest text-clinic-teal mb-3">
-            Testimonials
+            Patient Stories
           </p>
 
-          <h1 className="font-display text-4xl md:text-5xl font-semibold text-clinic-charcoal">
-            What our
+          <h2 className="font-display text-4xl md:text-5xl font-semibold text-clinic-charcoal">
+            Real smiles from
             <span className="relative ml-3 inline-block">
-              patients say
+              real patients
               <svg
                 viewBox="0 0 120 20"
                 className="absolute -bottom-2 left-0 h-3 w-full text-clinic-teal"
@@ -41,22 +68,26 @@ export default function TestimonialsPage() {
                 />
               </svg>
             </span>
-          </h1>
+          </h2>
 
           <p className="mt-4 text-lg text-clinic-charcoal/70 max-w-2xl mx-auto">
-            Real stories from real patients about their experience at our clinic.
+            Hear from our happy patients about their experience at our clinic.
           </p>
         </motion.div>
 
-        {/* All Testimonials */}
-        <div className="space-y-6">
-          {testimonialsData.map((testimonial, index) => (
+        {/* Testimonials Grid */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+        >
+          {previewTestimonials.map((testimonial) => (
             <motion.div
               key={testimonial.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.05 }}
-              className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-all duration-300 border border-clinic-sage/30"
+              variants={cardVariants}
+              className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-clinic-sage/30 hover:border-clinic-teal/20"
             >
               {/* Rating Stars */}
               <div className="flex gap-1 mb-4">
@@ -73,13 +104,14 @@ export default function TestimonialsPage() {
               </div>
 
               {/* Content */}
-              <p className="text-clinic-charcoal/70 leading-relaxed text-lg">
+              <p className="text-clinic-charcoal/70 leading-relaxed">
                 &ldquo;{testimonial.content}&rdquo;
               </p>
 
               {/* Patient Info */}
               <div className="mt-6 pt-6 border-t border-clinic-sage/30">
                 <div className="flex items-center gap-4">
+                  {/* Initials Avatar */}
                   <div className="h-12 w-12 rounded-full bg-clinic-teal/10 flex items-center justify-center text-clinic-teal font-display text-sm font-semibold">
                     {testimonial.patientInitial}
                   </div>
@@ -95,24 +127,33 @@ export default function TestimonialsPage() {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        {/* CTA */}
+        {/* Bottom CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-center mt-12 p-8 bg-clinic-teal/5 rounded-3xl border border-clinic-teal/10"
+          className="text-center mt-12"
         >
           <p className="text-clinic-charcoal/70 mb-4">
-            Ready to become our next happy patient?
+            Join our family of happy patients!
           </p>
-          <Link
-            href="/appointment"
-            className="inline-block bg-clinic-teal text-white px-8 py-3.5 rounded-full font-medium hover:bg-clinic-teal-dark transition-all hover:scale-105 shadow-sm hover:shadow-md"
-          >
-            Book an Appointment
-          </Link>
+          <div className="flex flex-wrap justify-center gap-4">
+            <a
+              href="#"
+              className="inline-block bg-white border border-clinic-teal text-clinic-teal px-8 py-3.5 rounded-full font-medium hover:bg-clinic-teal hover:text-white transition-all hover:scale-105 shadow-sm hover:shadow-md"
+            >
+              Read More Reviews
+            </a>
+            <Link
+              href="/appointment"
+              className="inline-block bg-clinic-teal text-white px-8 py-3.5 rounded-full font-medium hover:bg-clinic-teal-dark transition-all hover:scale-105 shadow-sm hover:shadow-md"
+            >
+              Book an Appointment
+            </Link>
+          </div>
         </motion.div>
       </div>
     </section>

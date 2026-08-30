@@ -1,44 +1,58 @@
 "use client";
 
+import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { doctorsData } from "@/app/lib/data/doctors";
 
-export default function DoctorsPage() {
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.22, 1, 0.36, 1] as const,
+    },
+  },
+};
+
+export default function DoctorsSection() {
+  // Show only first 4 doctors on homepage
+  const previewDoctors = doctorsData.slice(0, 4);
+
   return (
     <section className="py-24 bg-clinic-ivory">
       <div className="mx-auto max-w-6xl px-6">
-        {/* Navigation */}
-        <div className="flex flex-wrap items-center gap-3 mb-8">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-clinic-charcoal/60 hover:text-clinic-teal transition-colors"
-          >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-            </svg>
-            Back to home
-          </Link>
-        </div>
-
-        {/* Header */}
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
+          {/* Teal accent line */}
           <div className="flex justify-center mb-4">
             <div className="w-12 h-1 bg-clinic-teal rounded-full" />
           </div>
 
           <p className="text-sm font-medium uppercase tracking-widest text-clinic-teal mb-3">
-            Our Team
+            Our Doctors
           </p>
 
-          <h1 className="font-display text-4xl md:text-5xl font-semibold text-clinic-charcoal">
-            Meet our
+          <h2 className="font-display text-4xl md:text-5xl font-semibold text-clinic-charcoal">
+            Expert care from
             <span className="relative ml-3 inline-block">
               specialists
               <svg
@@ -55,33 +69,39 @@ export default function DoctorsPage() {
                 />
               </svg>
             </span>
-          </h1>
+          </h2>
 
           <p className="mt-4 text-lg text-clinic-charcoal/70 max-w-2xl mx-auto">
-            Our experienced team of dental specialists is dedicated to
-            providing exceptional care in a comfortable environment.
+            Our team of experienced specialists is dedicated to providing
+            exceptional dental care in a comfortable, welcoming environment.
           </p>
         </motion.div>
 
         {/* Doctors Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {doctorsData.map((doctor, index) => (
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+        >
+          {previewDoctors.map((doctor) => (
             <motion.div
               key={doctor.id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.05 }}
-              className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-clinic-sage/30 hover:border-clinic-teal/20"
+              variants={cardVariants}
+              whileHover={{ y: -8 }}
+              transition={{ duration: 0.3 }}
+              className="group bg-clinic-ivory rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-clinic-sage/30 hover:border-clinic-teal/20"
             >
               <Link href={`/doctors/${doctor.id}`} className="block">
                 {/* Image */}
-                <div className="relative h-72 w-full overflow-hidden bg-clinic-sage/30">
+                <div className="relative h-64 w-full overflow-hidden bg-clinic-sage/30">
                   <Image
                     src={doctor.image}
                     alt={doctor.name}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   />
                   {/* Experience badge */}
                   <div className="absolute top-4 right-4 bg-clinic-teal/90 text-white px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm">
@@ -100,24 +120,29 @@ export default function DoctorsPage() {
 
                   {/* Qualifications */}
                   <div className="mt-3 flex flex-wrap gap-1.5">
-                    {doctor.qualifications.map((qual, idx) => (
+                    {doctor.qualifications.slice(0, 2).map((qual, index) => (
                       <span
-                        key={idx}
+                        key={index}
                         className="text-xs bg-clinic-teal/5 text-clinic-charcoal/60 px-2 py-0.5 rounded-full border border-clinic-teal/10"
                       >
                         {qual}
                       </span>
                     ))}
+                    {doctor.qualifications.length > 2 && (
+                      <span className="text-xs text-clinic-charcoal/40">
+                        +{doctor.qualifications.length - 2}
+                      </span>
+                    )}
                   </div>
 
-                  {/* Bio */}
-                  <p className="mt-3 text-sm text-clinic-charcoal/60 line-clamp-3">
+                  {/* Bio preview */}
+                  <p className="mt-3 text-sm text-clinic-charcoal/60 line-clamp-2">
                     {doctor.bio}
                   </p>
 
-                  {/* View Profile */}
+                  {/* Learn More */}
                   <div className="mt-4 flex items-center gap-2 text-sm font-medium text-clinic-teal group-hover:gap-3 transition-all">
-                    View full profile
+                    View profile
                     <svg
                       className="w-4 h-4 transition-transform group-hover:translate-x-1"
                       fill="none"
@@ -136,23 +161,21 @@ export default function DoctorsPage() {
               </Link>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        {/* CTA */}
+        {/* Bottom CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-center mt-12 p-8 bg-clinic-teal/5 rounded-3xl border border-clinic-teal/10"
+          className="text-center mt-12"
         >
-          <p className="text-clinic-charcoal/70 mb-4">
-            Ready to meet your new dentist?
-          </p>
           <Link
-            href="/appointment"
+            href="/doctors"
             className="inline-block bg-clinic-teal text-white px-8 py-3.5 rounded-full font-medium hover:bg-clinic-teal-dark transition-all hover:scale-105 shadow-sm hover:shadow-md"
           >
-            Book an Appointment
+            Meet Our Team
           </Link>
         </motion.div>
       </div>

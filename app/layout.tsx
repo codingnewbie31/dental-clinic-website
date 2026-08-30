@@ -29,7 +29,7 @@ export default function RootLayout({
         className={`${fraunces.variable} ${inter.variable} font-body bg-clinic-ivory text-clinic-charcoal antialiased`}
       >
         <Navbar />
-        <main className="pt-20">{children}</main>
+        <main className="pt-10">{children}</main>
       </body>
     </html>
   );

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { servicesData } from "../data/Services";
+import { servicesData } from "../lib/data/Services";
 
 export default function ServicesPage() {
   return (
@@ -29,7 +29,7 @@ export default function ServicesPage() {
               your smile
               <svg
                 viewBox="0 0 120 20"
-                className="absolute -bottom-2 left-0 h-3 w-full text-clinic-sand"
+                className="absolute -bottom-2 left-0 h-3 w-full text-clinic-teal "
                 preserveAspectRatio="none"
               >
                 <path
@@ -66,12 +66,12 @@ export default function ServicesPage() {
             >
               <Link href={`/services/${service.slug}`} className="block">
                 {/* Icon */}
-                <div className="h-14 w-14 rounded-xl bg-clinic-teal/10 flex items-center justify-center text-3xl mb-4 group-hover:bg-clinic-teal/20 transition-colors">
+                <div className="h-14 w-14 rounded-xl bg-clinic-teal flex items-center justify-center text-3xl mb-4 group-hover:bg-clinic-teal-dark transition-colors">
                   {service.icon}
                 </div>
 
                 {/* Title */}
-                <h3 className="font-display text-lg font-semibold text-clinic-charcoal group-hover:text-clinic-teal transition-colors">
+                <h3 className="font-display text-lg font-semibold text-clinic-charcoal-dark group-hover:text-clinic-teal-dark transition-colors">
                   {service.title}
                 </h3>
 
