@@ -31,7 +31,7 @@ export default function ServicesSection() {
   const previewServices = servicesData.slice(0, 6);
 
   return (
-    <section className="py-24 bg-clinic-ivory">
+    <section className="py-16 md:py-20 bg-clinic-ivory">
       <div className="mx-auto max-w-6xl px-6">
         {/* Section Header */}
         <motion.div
@@ -92,7 +92,7 @@ export default function ServicesSection() {
               transition={{ duration: 0.3 }}
               className="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-clinic-sage/30 hover:border-clinic-teal/20"
             >
-              <Link href={`/services/${service.slug}`} className="block">
+              <Link href={`/services/${service.slug}`} className="flex h-full flex-col">
                 {/* Icon with teal */}
                 <div className="h-14 w-14 rounded-xl bg-clinic-teal flex items-center justify-center text-3xl mb-5 group-hover:bg-clinic-teal-dark transition-colors">
                   {service.icon}
@@ -143,7 +143,7 @@ export default function ServicesSection() {
                 </div>
 
                 {/* Learn More Link */}
-                <div className="mt-6 flex items-center gap-2 text-sm font-medium text-clinic-teal group-hover:gap-3 transition-all">
+                <div className="mt-auto pt-6 flex items-center gap-2 text-sm font-medium text-clinic-teal group-hover:gap-3 transition-all">
                   Learn more
                   <svg
                     className="w-4 h-4 transition-transform group-hover:translate-x-1"
