@@ -1,6 +1,10 @@
+"use client";
+
 import { Fraunces, Inter } from "next/font/google";
+import { usePathname } from "next/navigation";
 import "./globals.css";
 import Navbar from "./components/layout/Navbar";
+import CTASection from "./components/sections/CTASection";
 import Footer from "./components/layout/Footer";
 
 const fraunces = Fraunces({
@@ -14,24 +18,23 @@ const inter = Inter({
   variable: "--font-body",
 });
 
-export const metadata = {
-  title: "Dental Clinic",
-  description: "Premium dental care, made simple.",
-};
-
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const pathname = usePathname();
+  const isAdmin = pathname?.startsWith("/admin");
+
   return (
     <html lang="en">
       <body
         className={`${fraunces.variable} ${inter.variable} font-body bg-clinic-ivory text-clinic-charcoal antialiased`}
       >
-        <Navbar />
-        <main className="pt-10">{children}</main>
-        <Footer />
+        {!isAdmin && <Navbar />}
+        <main className={!isAdmin ? "pt-20" : ""}>{children}</main>
+        {!isAdmin && <CTASection />}
+        {!isAdmin && <Footer />}
       </body>
     </html>
   );
