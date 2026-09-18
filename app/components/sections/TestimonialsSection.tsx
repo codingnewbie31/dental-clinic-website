@@ -31,7 +31,7 @@ const previewTestimonials = testimonialsData.slice(0, 3);
 
 export default function TestimonialsSection() {
   return (
-    <section className="py-24 bg-clinic-ivory">
+    <section className="py-16 md:py-20 bg-clinic-ivory">
       <div className="mx-auto max-w-6xl px-6">
         {/* Section Header */}
         <motion.div

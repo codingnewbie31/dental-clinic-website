@@ -31,7 +31,7 @@ export default function ServicesSection() {
   const previewServices = servicesData.slice(0, 6);
 
   return (
-    <section className="py-16 md:py-20 bg-clinic-ivory">
+    <section className="py-5 bg-clinic-ivory">
       <div className="mx-auto max-w-6xl px-6">
         {/* Section Header */}
         <motion.div
