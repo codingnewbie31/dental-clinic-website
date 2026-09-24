@@ -28,7 +28,7 @@ const cardVariants: Variants = {
 
 export default function ServicesSection() {
   // Show only first 6 services on homepage
-  const previewServices = servicesData.slice(0, 6);
+  const previewServices = servicesData.slice(0, 3);
 
   return (
     <section className="py-5 bg-clinic-ivory">
@@ -43,7 +43,7 @@ export default function ServicesSection() {
         >
           {/* Teal accent line */}
           <div className="flex justify-center mb-4">
-            <div className="w-12 h-1 bg-clinic-teal rounded-full" />
+            <div className="w-12 h-1 bg-clinic-sand rounded-full" />
           </div>
 
           <p className="text-sm font-medium uppercase tracking-widest text-clinic-teal mb-3">
@@ -56,7 +56,7 @@ export default function ServicesSection() {
               everyone
               <svg
                 viewBox="0 0 120 20"
-                className="absolute -bottom-2 left-0 h-3 w-full text-clinic-teal"
+                className="absolute -bottom-2 left-0 h-3 w-full text-clinic-sand"
                 preserveAspectRatio="none"
               >
                 <path
@@ -92,7 +92,10 @@ export default function ServicesSection() {
               transition={{ duration: 0.3 }}
               className="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-clinic-sage/30 hover:border-clinic-teal/20"
             >
-              <Link href={`/services/${service.slug}`} className="flex h-full flex-col">
+              <Link
+                href={`/services/${service.slug}`}
+                className="flex h-full flex-col"
+              >
                 {/* Icon with teal */}
                 <div className="h-14 w-14 rounded-xl bg-clinic-teal flex items-center justify-center text-3xl mb-5 group-hover:bg-clinic-teal-dark transition-colors">
                   {service.icon}
@@ -128,15 +131,35 @@ export default function ServicesSection() {
                 {/* Duration & Price */}
                 <div className="mt-4 flex items-center gap-4 text-sm text-clinic-charcoal/60">
                   <span className="flex items-center gap-1">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
                     </svg>
                     {service.duration}
                   </span>
                   <span className="w-1 h-1 bg-clinic-charcoal/20 rounded-full" />
                   <span className="flex items-center gap-1">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v1m0 1v1m0 1V8z" />
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v1m0 1v1m0 1V8z"
+                      />
                     </svg>
                     {service.priceRange}
                   </span>

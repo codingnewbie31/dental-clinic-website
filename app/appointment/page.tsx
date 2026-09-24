@@ -173,7 +173,7 @@ export default function AppointmentPage() {
             className="text-center"
           >
             <div className="flex justify-center mb-4">
-              <div className="w-12 h-1 bg-clinic-teal rounded-full" />
+              <div className="w-12 h-1 bg-clinic-sand rounded-full" />
             </div>
 
             <p className="text-sm font-medium uppercase tracking-widest text-clinic-teal mb-3">
@@ -186,7 +186,7 @@ export default function AppointmentPage() {
                 visit
                 <svg
                   viewBox="0 0 120 20"
-                  className="absolute -bottom-2 left-0 h-3 w-full text-clinic-teal"
+                  className="absolute -bottom-2 left-0 h-3 w-full text-clinic-sand"
                   preserveAspectRatio="none"
                 >
                   <path

@@ -111,7 +111,7 @@ export default function HeroSection() {
                             {slide.highlight}
                             <svg
                               viewBox="0 0 120 20"
-                              className="absolute -bottom-2 left-0 h-3 w-full text-clinic-teal"
+                              className="absolute -bottom-2 left-0 h-3 w-full text-clinic-sand"
                               preserveAspectRatio="none"
                             >
                               <path
@@ -146,7 +146,7 @@ export default function HeroSection() {
                           </Link>
                           <Link
                             href={slide.secondaryHref}
-                            className="text-clinic-charcoal/70 underline underline-offset-4 hover:text-clinic-charcoal transition-colors"
+                            className="rounded-full px-8 py-3.5 text-clinic-teal ring-1 ring-inset ring-clinic-teal/30 transition-all hover:bg-clinic-teal/5 hover:ring-clinic-teal"
                           >
                             {slide.secondaryLabel}
                           </Link>
@@ -220,7 +220,7 @@ export default function HeroSection() {
             aria-label={`Go to slide ${index + 1}`}
             className={`h-2 rounded-full transition-all ${
               selectedIndex === index
-                ? "w-6 bg-clinic-teal"
+                ? "w-6 bg-clinic-sand"
                 : "w-2 bg-clinic-charcoal/20 hover:bg-clinic-charcoal/40"
             }`}
           />

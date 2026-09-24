@@ -2,10 +2,11 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import OrbitButton from "@/app/components/ui/OrbitButton";
 
 export default function CTASection() {
   return (
-    <section className="relative overflow-hidden bg-clinic-teal py-16 md:py-20">
+    <section className="relative overflow-hidden bg-clinic-teal py-8 md:py-12">
       {/* Decorative background elements */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-white/20 blur-3xl" />
@@ -60,12 +61,7 @@ export default function CTASection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mt-10 flex flex-wrap items-center justify-center gap-4"
           >
-            <Link
-              href="/appointment"
-              className="bg-white text-clinic-teal px-8 py-3.5 rounded-full font-medium hover:bg-clinic-ivory transition-all hover:scale-105 shadow-lg hover:shadow-xl"
-            >
-              Book Appointment
-            </Link>
+            <OrbitButton href="/appointment">Book Appointment</OrbitButton>
             <Link
               href="/services"
               className="bg-white/10 text-white px-8 py-3.5 rounded-full font-medium hover:bg-white/20 transition-all backdrop-blur-sm border border-white/20"

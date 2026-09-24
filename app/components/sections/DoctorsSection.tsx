@@ -32,7 +32,7 @@ export default function DoctorsSection() {
   const previewDoctors = doctorsData.slice(0, 4);
 
   return (
-    <section className="py-16 md:py-20 bg-clinic-ivory">
+    <section className="py-2 md:py-4 bg-clinic-ivory">
       <div className="mx-auto max-w-6xl px-6">
         {/* Section Header */}
         <motion.div
@@ -44,7 +44,7 @@ export default function DoctorsSection() {
         >
           {/* Teal accent line */}
           <div className="flex justify-center mb-4">
-            <div className="w-12 h-1 bg-clinic-teal rounded-full" />
+            <div className="w-12 h-1 bg-clinic-sand rounded-full" />
           </div>
 
           <p className="text-sm font-medium uppercase tracking-widest text-clinic-teal mb-3">
@@ -57,7 +57,7 @@ export default function DoctorsSection() {
               specialists
               <svg
                 viewBox="0 0 120 20"
-                className="absolute -bottom-2 left-0 h-3 w-full text-clinic-teal"
+                className="absolute -bottom-2 left-0 h-3 w-full text-clinic-sand"
                 preserveAspectRatio="none"
               >
                 <path

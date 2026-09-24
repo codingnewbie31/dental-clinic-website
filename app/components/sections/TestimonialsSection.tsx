@@ -2,7 +2,6 @@
 
 import { motion, Variants } from "framer-motion";
 import { testimonialsData } from "@/app/lib/data/testimonials";
-import Link from "next/link";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -31,7 +30,7 @@ const previewTestimonials = testimonialsData.slice(0, 3);
 
 export default function TestimonialsSection() {
   return (
-    <section className="py-16 md:py-20 bg-clinic-ivory">
+    <section className="py-8 md:py-8 bg-clinic-ivory">
       <div className="mx-auto max-w-6xl px-6">
         {/* Section Header */}
         <motion.div
@@ -43,7 +42,7 @@ export default function TestimonialsSection() {
         >
           {/* Teal accent line */}
           <div className="flex justify-center mb-4">
-            <div className="w-12 h-1 bg-clinic-teal rounded-full" />
+            <div className="w-12 h-1 bg-clinic-sand rounded-full" />
           </div>
 
           <p className="text-sm font-medium uppercase tracking-widest text-clinic-teal mb-3">
@@ -56,7 +55,7 @@ export default function TestimonialsSection() {
               real patients
               <svg
                 viewBox="0 0 120 20"
-                className="absolute -bottom-2 left-0 h-3 w-full text-clinic-teal"
+                className="absolute -bottom-2 left-0 h-3 w-full text-clinic-sand"
                 preserveAspectRatio="none"
               >
                 <path
@@ -147,12 +146,6 @@ export default function TestimonialsSection() {
             >
               Read More Reviews
             </a>
-            <Link
-              href="/appointment"
-              className="inline-block bg-clinic-teal text-white px-8 py-3.5 rounded-full font-medium hover:bg-clinic-teal-dark transition-all hover:scale-105 shadow-sm hover:shadow-md"
-            >
-              Book an Appointment
-            </Link>
           </div>
         </motion.div>
       </div>
