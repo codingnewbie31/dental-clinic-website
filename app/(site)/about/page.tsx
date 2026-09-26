@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Underline from "@/app/components/ui/Underline";
 
 const values = [
   {
@@ -78,22 +79,7 @@ export default function AboutPage() {
 
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-clinic-charcoal">
               Caring for smiles
-              <span className="relative ml-3 inline-block">
-                since 2014
-                <svg
-                  viewBox="0 0 200 20"
-                  className="absolute -bottom-2 left-0 h-3 w-full text-clinic-sand"
-                  preserveAspectRatio="none"
-                >
-                  <path
-                    d="M2 14 Q 100 -4 198 14"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </span>
+              <Underline className="ml-3">since 2014</Underline>
             </h1>
 
             <p className="mt-6 text-lg text-clinic-charcoal/70 max-w-2xl mx-auto">

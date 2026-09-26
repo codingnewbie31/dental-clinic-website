@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { servicesData } from "../lib/data/Services";
+import { servicesData } from "@/app/lib/data/services";
+import Underline from "@/app/components/ui/Underline";
 
 export default function ServicesPage() {
   return (
@@ -25,22 +26,7 @@ export default function ServicesPage() {
 
           <h1 className="font-display text-4xl md:text-5xl font-semibold text-clinic-charcoal">
             Comprehensive care for
-            <span className="relative ml-3 inline-block">
-              your smile
-              <svg
-                viewBox="0 0 120 20"
-                className="absolute -bottom-2 left-0 h-3 w-full text-clinic-sand"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M2 14 Q 60 -4 118 14"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="4"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </span>
+            <Underline className="ml-3">your smile</Underline>
           </h1>
 
           <p className="mt-4 text-lg text-clinic-charcoal/70 max-w-2xl mx-auto">

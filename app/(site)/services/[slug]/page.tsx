@@ -3,7 +3,7 @@
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { servicesData } from "@/app/lib/data/Services";
+import { servicesData } from "@/app/lib/data/services";
 
 export default function ServiceDetailPage() {
   const params = useParams();

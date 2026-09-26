@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-
+import Underline from "@/app/components/ui/Underline";
 interface ContactFormData {
   name: string;
   email: string;
@@ -103,22 +103,7 @@ export default function ContactPage() {
 
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-clinic-charcoal">
               We would love to
-              <span className="relative ml-3 inline-block">
-                hear from you
-                <svg
-                  viewBox="0 0 200 20"
-                  className="absolute -bottom-2 left-0 h-3 w-full text-clinic-sand"
-                  preserveAspectRatio="none"
-                >
-                  <path
-                    d="M2 14 Q 100 -4 198 14"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </span>
+              <Underline className="ml-3">hear from you</Underline>
             </h1>
 
             <p className="mt-6 text-lg text-clinic-charcoal/70 max-w-2xl mx-auto">

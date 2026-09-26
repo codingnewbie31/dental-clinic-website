@@ -4,6 +4,7 @@ import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { doctorsData } from "@/app/lib/data/doctors";
+import Underline from "@/app/components/ui/Underline";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -53,22 +54,8 @@ export default function DoctorsSection() {
 
           <h2 className="font-display text-4xl md:text-5xl font-semibold text-clinic-charcoal">
             Expert care from
-            <span className="relative ml-3 inline-block">
-              specialists
-              <svg
-                viewBox="0 0 120 20"
-                className="absolute -bottom-2 left-0 h-3 w-full text-clinic-sand"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M2 14 Q 60 -4 118 14"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="4"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </span>
+            <Underline className="ml-3">specialists</Underline>
+
           </h2>
 
           <p className="mt-4 text-lg text-clinic-charcoal/70 max-w-2xl mx-auto">

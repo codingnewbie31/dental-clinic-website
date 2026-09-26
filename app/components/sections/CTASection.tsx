@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import OrbitButton from "@/app/components/ui/OrbitButton";
+import Underline from "../ui/Underline";
 
 export default function CTASection() {
   return (
@@ -29,22 +30,7 @@ export default function CTASection() {
           <h2 className="font-display text-3xl md:text-5xl font-semibold text-white leading-tight">
             Ready for a healthier,
             <br />
-            <span className="relative inline-block">
-              more confident smile?
-              <svg
-                viewBox="0 0 200 20"
-                className="absolute -bottom-2 left-0 h-3 w-full text-clinic-sand/60"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M2 14 Q 100 -4 198 14"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="4"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </span>
+            <Underline className="ml-3">more confident smile?</Underline> 
           </h2>
 
           {/* Description */}
