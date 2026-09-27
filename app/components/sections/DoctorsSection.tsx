@@ -6,6 +6,7 @@ import Image from "next/image";
 import { doctorsData } from "@/app/lib/data/doctors";
 import Underline from "@/app/components/ui/Underline";
 import { containerVariants, cardVariants } from "@/app/lib/animations";
+import Pill from "@/app/components/ui/Pill";
 
 export default function DoctorsSection() {
   // Show only first 4 doctors on homepage
@@ -34,7 +35,6 @@ export default function DoctorsSection() {
           <h2 className="font-display text-4xl md:text-5xl font-semibold text-clinic-charcoal">
             Expert care from
             <Underline className="ml-3">specialists</Underline>
-
           </h2>
 
           <p className="mt-4 text-lg text-clinic-charcoal/70 max-w-2xl mx-auto">
@@ -87,12 +87,7 @@ export default function DoctorsSection() {
                   {/* Qualifications */}
                   <div className="mt-3 flex flex-wrap gap-1.5">
                     {doctor.qualifications.slice(0, 2).map((qual, index) => (
-                      <span
-                        key={index}
-                        className="text-xs bg-clinic-teal/5 text-clinic-charcoal/60 px-2 py-0.5 rounded-full border border-clinic-teal/10"
-                      >
-                        {qual}
-                      </span>
+                      <Pill key={index}>{qual}</Pill>
                     ))}
                     {doctor.qualifications.length > 2 && (
                       <span className="text-xs text-clinic-charcoal/40">

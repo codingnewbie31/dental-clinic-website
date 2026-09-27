@@ -1,10 +1,11 @@
 "use client";
 
-import { motion} from "framer-motion";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { servicesData } from "@/app/lib/data/services";
 import Underline from "@/app/components/ui/Underline";
 import { containerVariants, cardVariants } from "@/app/lib/animations";
+import Pill from "@/app/components/ui/Pill";
 
 export default function ServicesSection() {
   // Show only first 6 services on homepage
@@ -79,12 +80,9 @@ export default function ServicesSection() {
                 {/* Key features pills */}
                 <div className="mt-4 flex flex-wrap gap-2">
                   {service.features.slice(0, 2).map((feature, index) => (
-                    <span
-                      key={index}
-                      className="text-xs bg-clinic-teal/5 text-clinic-teal px-2 py-1 rounded-full border border-clinic-teal/10"
-                    >
+                    <Pill key={index} tone="teal">
                       {feature}
-                    </span>
+                    </Pill>
                   ))}
                   {service.features.length > 2 && (
                     <span className="text-xs text-clinic-charcoal/50">
