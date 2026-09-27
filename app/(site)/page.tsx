@@ -1,4 +1,4 @@
-// import CTASection from "./components/sections/CTASection";
+import CTASection from "@/app/components/sections/CTASection";
 import DoctorsSection from "@/app/components/sections/DoctorsSection";
 import HeroSection from "@/app/components/sections/HeroSection";
 import ServicesSection from "@/app/components/sections/ServicesSection";
@@ -12,8 +12,7 @@ export default function Home() {
       <ServicesSection />
       <DoctorsSection />
       <TestimonialsSection />
-      {/* <CTASection /> */}
-      {/* CTA sections go here next */}
+      <CTASection />
     </main>
   );
 }

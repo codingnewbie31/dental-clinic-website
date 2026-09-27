@@ -1,13 +1,48 @@
-export const Button = () => {
+import Link from "next/link";
+
+type ButtonProps = {
+  href?: string;
+  onClick?: () => void;
+  variant?: "primary" | "outline" | "ghost" | "ghost-ring" | "glass";
+  size?: "sm" | "lg";
+  lift?: boolean;
+  className?: string;
+  children: React.ReactNode;
+};
+
+const variantClasses: Record<string, string> = {
+  primary: "bg-clinic-teal text-white hover:bg-clinic-teal-dark",
+  outline: "bg-white border border-clinic-teal text-clinic-teal hover:bg-clinic-teal hover:text-white",
+  ghost: "text-clinic-teal border border-clinic-teal/30 hover:bg-clinic-teal/5",
+  "ghost-ring": "text-clinic-teal ring-1 ring-inset ring-clinic-teal/30 hover:bg-clinic-teal/5 hover:ring-clinic-teal",
+  glass: "bg-white/10 text-white border border-white/20 hover:bg-white/20 backdrop-blur-sm",
+};
+
+export default function Button({
+  href,
+  onClick,
+  variant = "primary",
+  size = "lg",
+  lift = false,
+  className = "",
+  children,
+}: ButtonProps) {
+  const sizeClasses = size === "sm" ? "px-6 py-3" : "px-8 py-3.5";
+  const liftClasses = lift ? "shadow-sm hover:shadow-md hover:scale-105" : "";
+
+  const classes = `inline-flex items-center gap-2 rounded-full font-medium transition-all ${sizeClasses} ${variantClasses[variant]} ${liftClasses} ${className}`;
+
+  if (href) {
+    return (
+      <Link href={href} className={classes}>
+        {children}
+      </Link>
+    );
+  }
+
   return (
-    <button
-      type="button"
-      className="relative inline-flex overflow-hidden rounded-full p-[1.5px] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-violet-400"
-    >
-      <span className="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#0000_0%,#a78bfa_50%,#0000_100%)] motion-reduce:animate-none" />
-      <span className="inline-flex h-full w-full items-center justify-center rounded-full bg-slate-950 px-8 py-3 text-sm font-medium text-white">
-        Start free trial
-      </span>
+    <button onClick={onClick} className={classes}>
+      {children}
     </button>
   );
-};
+}

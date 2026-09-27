@@ -1,9 +1,10 @@
 "use client";
 
-import { motion} from "framer-motion";
+import { motion } from "framer-motion";
 import { testimonialsData } from "@/app/lib/data/testimonials";
 import Underline from "@/app/components/ui/Underline";
 import { containerVariants, cardVariants } from "@/app/lib/animations";
+import Card from "@/app/components/ui/Card";
 
 // Show only first 3 testimonials on homepage
 const previewTestimonials = testimonialsData.slice(0, 3);
@@ -48,10 +49,10 @@ export default function TestimonialsSection() {
           className="grid grid-cols-1 md:grid-cols-3 gap-6"
         >
           {previewTestimonials.map((testimonial) => (
-            <motion.div
-              key={testimonial.id}
-              variants={cardVariants}
-              className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-clinic-sage/30 hover:border-clinic-teal/20"
+            <Card 
+            key={testimonial.id} 
+            variants={cardVariants} 
+            className="p-8"
             >
               {/* Rating Stars */}
               <div className="flex gap-1 mb-4">
@@ -89,7 +90,7 @@ export default function TestimonialsSection() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </Card>
           ))}
         </motion.div>
 
@@ -106,7 +107,7 @@ export default function TestimonialsSection() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a
-              href="#"
+              href="/testimonials"
               className="inline-block bg-white border border-clinic-teal text-clinic-teal px-8 py-3.5 rounded-full font-medium hover:bg-clinic-teal hover:text-white transition-all hover:scale-105 shadow-sm hover:shadow-md"
             >
               Read More Reviews
