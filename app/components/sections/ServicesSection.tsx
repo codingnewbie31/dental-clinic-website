@@ -1,31 +1,10 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
+import { motion} from "framer-motion";
 import Link from "next/link";
 import { servicesData } from "@/app/lib/data/services";
 import Underline from "@/app/components/ui/Underline";
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-};
-
-const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: [0.22, 1, 0.36, 1] as const,
-    },
-  },
-};
+import { containerVariants, cardVariants } from "@/app/lib/animations";
 
 export default function ServicesSection() {
   // Show only first 6 services on homepage
