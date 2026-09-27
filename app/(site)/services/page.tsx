@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { servicesData } from "@/app/lib/data/services";
 import Underline from "@/app/components/ui/Underline";
+import Card from "@/app/components/ui/Card";
 
 export default function ServicesPage() {
   return (
@@ -43,12 +44,12 @@ export default function ServicesPage() {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {servicesData.map((service, index) => (
-            <motion.div
+            <Card
               key={service.id}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.05 }}
-              className="group bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-clinic-sage/30 hover:border-clinic-teal/20"
+              className="group p-6"
             >
               <Link href={`/services/${service.slug}`} className="block">
                 {/* Icon */}
@@ -94,7 +95,7 @@ export default function ServicesPage() {
                   </svg>
                 </div>
               </Link>
-            </motion.div>
+            </Card>
           ))}
         </motion.div>
 

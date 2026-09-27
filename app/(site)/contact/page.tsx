@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Underline from "@/app/components/ui/Underline";
+import Card from "@/app/components/ui/Card";
 interface ContactFormData {
   name: string;
   email: string;
@@ -38,19 +39,23 @@ const contactInfo = [
 const faqs = [
   {
     question: "How do I book an appointment?",
-    answer: "You can book online through our appointment page, call us directly, or visit the clinic in person.",
+    answer:
+      "You can book online through our appointment page, call us directly, or visit the clinic in person.",
   },
   {
     question: "Do you accept walk-ins?",
-    answer: "Yes, we accept walk-ins, but we recommend booking an appointment to minimize waiting time.",
+    answer:
+      "Yes, we accept walk-ins, but we recommend booking an appointment to minimize waiting time.",
   },
   {
     question: "What payment methods do you accept?",
-    answer: "We accept cash, all major debit/credit cards, and bank transfers. Easy installment plans are available for major treatments.",
+    answer:
+      "We accept cash, all major debit/credit cards, and bank transfers. Easy installment plans are available for major treatments.",
   },
   {
     question: "Is parking available?",
-    answer: "Yes, we have free parking available for all patients right outside the clinic.",
+    answer:
+      "Yes, we have free parking available for all patients right outside the clinic.",
   },
 ];
 
@@ -67,7 +72,9 @@ export default function ContactPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -119,13 +126,15 @@ export default function ContactPage() {
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {contactInfo.map((info, index) => (
-              <motion.div
+              <Card
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-clinic-ivory rounded-2xl p-6 border border-clinic-sage/30 hover:border-clinic-teal/20 transition-all hover:shadow-md"
+                tone="ivory"
+                hover="soft"
+                className="p-6"
               >
                 <div className="h-12 w-12 rounded-xl bg-clinic-teal/10 flex items-center justify-center text-2xl mb-4">
                   {info.icon}
@@ -140,7 +149,7 @@ export default function ContactPage() {
                     </p>
                   ))}
                 </div>
-              </motion.div>
+              </Card>
             ))}
           </div>
         </div>
@@ -182,7 +191,10 @@ export default function ContactPage() {
                 <form onSubmit={handleSubmit} className="space-y-5">
                   {/* Name */}
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-clinic-charcoal mb-2">
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-medium text-clinic-charcoal mb-2"
+                    >
                       Full Name
                     </label>
                     <input
@@ -200,7 +212,10 @@ export default function ContactPage() {
                   {/* Email + Phone */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-clinic-charcoal mb-2">
+                      <label
+                        htmlFor="email"
+                        className="block text-sm font-medium text-clinic-charcoal mb-2"
+                      >
                         Email
                       </label>
                       <input
@@ -215,7 +230,10 @@ export default function ContactPage() {
                       />
                     </div>
                     <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-clinic-charcoal mb-2">
+                      <label
+                        htmlFor="phone"
+                        className="block text-sm font-medium text-clinic-charcoal mb-2"
+                      >
                         Phone
                       </label>
                       <input
@@ -232,7 +250,10 @@ export default function ContactPage() {
 
                   {/* Subject */}
                   <div>
-                    <label htmlFor="subject" className="block text-sm font-medium text-clinic-charcoal mb-2">
+                    <label
+                      htmlFor="subject"
+                      className="block text-sm font-medium text-clinic-charcoal mb-2"
+                    >
                       Subject
                     </label>
                     <select
@@ -255,7 +276,10 @@ export default function ContactPage() {
 
                   {/* Message */}
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-clinic-charcoal mb-2">
+                    <label
+                      htmlFor="message"
+                      className="block text-sm font-medium text-clinic-charcoal mb-2"
+                    >
                       Message
                     </label>
                     <textarea
@@ -293,8 +317,12 @@ export default function ContactPage() {
               <div className="aspect-4/3 rounded-3xl bg-clinic-sage/40 overflow-hidden relative flex items-center justify-center">
                 <div className="text-center">
                   <div className="text-5xl mb-3">🗺️</div>
-                  <p className="text-clinic-teal/70 font-display">Clinic Location Map</p>
-                  <p className="text-sm text-clinic-charcoal/50 mt-1">123 Dental Street, Lahore</p>
+                  <p className="text-clinic-teal/70 font-display">
+                    Clinic Location Map
+                  </p>
+                  <p className="text-sm text-clinic-charcoal/50 mt-1">
+                    123 Dental Street, Lahore
+                  </p>
                 </div>
               </div>
 
@@ -304,7 +332,8 @@ export default function ContactPage() {
                   Prefer to book directly?
                 </h3>
                 <p className="text-sm text-clinic-charcoal/70 mb-5">
-                  Skip the form and schedule your appointment online in under 60 seconds.
+                  Skip the form and schedule your appointment online in under 60
+                  seconds.
                 </p>
                 <Link
                   href="/appointment"

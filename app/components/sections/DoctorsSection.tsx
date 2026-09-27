@@ -7,6 +7,7 @@ import { doctorsData } from "@/app/lib/data/doctors";
 import Underline from "@/app/components/ui/Underline";
 import { containerVariants, cardVariants } from "@/app/lib/animations";
 import Pill from "@/app/components/ui/Pill";
+import Card from "@/app/components/ui/Card";
 
 export default function DoctorsSection() {
   // Show only first 4 doctors on homepage
@@ -52,12 +53,13 @@ export default function DoctorsSection() {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
         >
           {previewDoctors.map((doctor) => (
-            <motion.div
+            <Card
               key={doctor.id}
               variants={cardVariants}
               whileHover={{ y: -8 }}
               transition={{ duration: 0.3 }}
-              className="group bg-clinic-ivory rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-clinic-sage/30 hover:border-clinic-teal/20"
+              tone="ivory"
+              className="group overflow-hidden"
             >
               <Link href={`/doctors/${doctor.id}`} className="block">
                 {/* Image */}
@@ -120,7 +122,7 @@ export default function DoctorsSection() {
                   </div>
                 </div>
               </Link>
-            </motion.div>
+            </Card>
           ))}
         </motion.div>
 
