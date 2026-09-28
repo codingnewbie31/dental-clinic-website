@@ -4,8 +4,8 @@ import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { servicesData } from "@/app/lib/data/services";
-import Underline from "@/app/components/ui/Underline";
 import Button from "@/app/components/ui/Button";
+import SectionHeading from "@/app/components/ui/SectionHeading";
 interface AppointmentFormData {
   fullName: string;
   email: string;
@@ -65,17 +65,17 @@ export default function AppointmentPage() {
   const formTopRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-  if (isSubmitted) {
-    // rAF ensures layout has settled with the new success card
-    requestAnimationFrame(() => {
-      topRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-  }
-}, [isSubmitted]);
+    if (isSubmitted) {
+      // rAF ensures layout has settled with the new success card
+      requestAnimationFrame(() => {
+        topRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    }
+  }, [isSubmitted]);
 
-useEffect(() => {
-  formTopRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-}, [step]);
+  useEffect(() => {
+    formTopRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [step]);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -108,7 +108,10 @@ useEffect(() => {
   // Success State
   if (isSubmitted) {
     return (
-      <section ref={topRef} className="py-24 bg-clinic-ivory min-h-screen scroll-mt-4">
+      <section
+        ref={topRef}
+        className="py-24 bg-clinic-ivory min-h-screen scroll-mt-4"
+      >
         <div className="mx-auto max-w-2xl px-6">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -177,7 +180,7 @@ useEffect(() => {
                 variant="ghost"
                 lift
                 size="sm"
-                >
+              >
                 Book Another
               </Button>
             </div>
@@ -198,23 +201,14 @@ useEffect(() => {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <div className="flex justify-center mb-4">
-              <div className="w-12 h-1 bg-clinic-sand rounded-full" />
-            </div>
-
-            <p className="text-sm font-medium uppercase tracking-widest text-clinic-teal mb-3">
-              Book Appointment
-            </p>
-
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-clinic-charcoal">
-              Schedule your
-              <Underline className="ml-3">visits</Underline>
-            </h1>
-
-            <p className="mt-6 text-lg text-clinic-charcoal/70 max-w-2xl mx-auto">
-              Choose a service, pick a time, and we will take care of the rest.
-              Booking takes less than 60 seconds.
-            </p>
+            <SectionHeading
+              as="h1"
+              size="large"
+              eyebrow="Book Appointment"
+              title="Schedule your"
+              highlight="visit"
+              description="Choose a service, pick a time, and we will take care of the rest. Booking takes less than 60 seconds."
+            />
           </motion.div>
         </div>
       </section>

@@ -4,11 +4,11 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { doctorsData } from "@/app/lib/data/doctors";
-import Underline from "@/app/components/ui/Underline";
 import { containerVariants, cardVariants } from "@/app/lib/animations";
 import Pill from "@/app/components/ui/Pill";
 import Card from "@/app/components/ui/Card";
 import Button from "@/app/components/ui/Button";
+import SectionHeading from "@/app/components/ui/SectionHeading";
 
 export default function DoctorsSection() {
   // Show only first 4 doctors on homepage
@@ -25,24 +25,12 @@ export default function DoctorsSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          {/* Teal accent line */}
-          <div className="flex justify-center mb-4">
-            <div className="w-12 h-1 bg-clinic-sand rounded-full" />
-          </div>
-
-          <p className="text-sm font-medium uppercase tracking-widest text-clinic-teal mb-3">
-            Our Doctors
-          </p>
-
-          <h2 className="font-display text-4xl md:text-5xl font-semibold text-clinic-charcoal">
-            Expert care from
-            <Underline className="ml-3">specialists</Underline>
-          </h2>
-
-          <p className="mt-4 text-lg text-clinic-charcoal/70 max-w-2xl mx-auto">
-            Our team of experienced specialists is dedicated to providing
-            exceptional dental care in a comfortable, welcoming environment.
-          </p>
+          <SectionHeading
+            eyebrow="Our Doctors"
+            title="Expert care from"
+            highlight="specialists"
+            description="Our team of experienced specialists is dedicated to providing exceptional dental care in a comfortable, welcoming environment."
+          />
         </motion.div>
 
         {/* Doctors Grid */}

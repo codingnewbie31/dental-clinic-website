@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Button from "@/app/components/ui/Button";
+import SectionHeading from "@/app/components/ui/SectionHeading";
 
 const sections = [
   {
@@ -108,18 +109,11 @@ export default function TermsPage() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <div className="flex justify-center mb-4">
-              <div className="w-12 h-1 bg-clinic-sand rounded-full" />
-            </div>
-
-            <p className="text-sm font-medium uppercase tracking-widest text-clinic-teal mb-3">
-              Legal
-            </p>
-
-            <h1 className="font-display text-4xl md:text-5xl font-semibold text-clinic-charcoal">
-              Terms & Conditions
-            </h1>
-
+            <SectionHeading
+              as="h1"
+              eyebrow="Legal"
+              title="Terms & Conditions"
+            />
             <p className="mt-4 text-clinic-charcoal/60">
               Last updated: December 2024
             </p>
@@ -159,7 +153,10 @@ export default function TermsPage() {
                 </h2>
                 <ul className="space-y-3">
                   {section.content.map((item, i) => (
-                    <li key={i} className="flex gap-3 text-clinic-charcoal/70 leading-relaxed">
+                    <li
+                      key={i}
+                      className="flex gap-3 text-clinic-charcoal/70 leading-relaxed"
+                    >
                       <span className="text-clinic-teal shrink-0 mt-1">•</span>
                       {item}
                     </li>
@@ -184,19 +181,10 @@ export default function TermsPage() {
               Feel free to reach out — we are happy to clarify anything.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4">
-              <Button
-                href="/contact"
-                size="sm"
-                lift
-                >
+              <Button href="/contact" size="sm" lift>
                 Contact Us
               </Button>
-              <Button
-                href="/"
-                variant="ghost"
-                size="sm"
-                lift
-                >
+              <Button href="/" variant="ghost" size="sm" lift>
                 Back to Home
               </Button>
             </div>

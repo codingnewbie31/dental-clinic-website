@@ -2,8 +2,8 @@
 
 import { motion } from "framer-motion";
 import { testimonialsData } from "@/app/lib/data/testimonials";
-import Underline from "@/app/components/ui/Underline";
 import Button from "@/app/components/ui/Button";
+import SectionHeading from "@/app/components/ui/SectionHeading";
 
 export default function TestimonialsPage() {
   return (
@@ -16,22 +16,13 @@ export default function TestimonialsPage() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <div className="flex justify-center mb-4">
-            <div className="w-12 h-1 bg-clinic-sand rounded-full" />
-          </div>
-
-          <p className="text-sm font-medium uppercase tracking-widest text-clinic-teal mb-3">
-            Testimonials
-          </p>
-
-          <h1 className="font-display text-4xl md:text-5xl font-semibold text-clinic-charcoal">
-            What our
-            <Underline className="ml-3">patients say</Underline>
-          </h1>
-
-          <p className="mt-4 text-lg text-clinic-charcoal/70 max-w-2xl mx-auto">
-            Real stories from real patients about their experience at our clinic.
-          </p>
+          <SectionHeading
+            as="h1"
+            eyebrow="Testimonials"
+            title="What our"
+            highlight="patients say"
+            description="Real stories from real patients about their experience at our clinic."
+          />
         </motion.div>
 
         {/* All Testimonials */}
@@ -93,9 +84,7 @@ export default function TestimonialsPage() {
           <p className="text-clinic-charcoal/70 mb-4">
             Ready to become our next happy patient?
           </p>
-          <Button
-            href="/appointment"
-            lift>
+          <Button href="/appointment" lift>
             Book an Appointment
           </Button>
         </motion.div>

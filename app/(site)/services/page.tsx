@@ -3,9 +3,9 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { servicesData } from "@/app/lib/data/services";
-import Underline from "@/app/components/ui/Underline";
 import Card from "@/app/components/ui/Card";
 import Button from "@/app/components/ui/Button";
+import SectionHeading from "@/app/components/ui/SectionHeading";
 
 export default function ServicesPage() {
   return (
@@ -18,23 +18,13 @@ export default function ServicesPage() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <div className="flex justify-center mb-4">
-            <div className="w-12 h-1 bg-clinic-sand rounded-full" />
-          </div>
-
-          <p className="text-sm font-medium uppercase tracking-widest text-clinic-teal mb-3">
-            Dental Services
-          </p>
-
-          <h1 className="font-display text-4xl md:text-5xl font-semibold text-clinic-charcoal">
-            Comprehensive care for
-            <Underline className="ml-3">your smile</Underline>
-          </h1>
-
-          <p className="mt-4 text-lg text-clinic-charcoal/70 max-w-2xl mx-auto">
-            Explore our full range of dental services designed to keep your
-            smile healthy and confident.
-          </p>
+          <SectionHeading
+            as="h1"
+            eyebrow="Dental Services"
+            title="Comprehensive care for"
+            highlight="your smile"
+            description="Explore our full range of dental services designed to keep your smile healthy and confident."
+          />
         </motion.div>
 
         {/* All Services Grid */}

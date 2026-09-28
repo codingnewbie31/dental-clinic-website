@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import Underline from "@/app/components/ui/Underline";
 import Card from "@/app/components/ui/Card";
 import Button from "@/app/components/ui/Button";
+import SectionHeading from "@/app/components/ui/SectionHeading";
 interface ContactFormData {
   name: string;
   email: string;
@@ -100,23 +100,15 @@ export default function ContactPage() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <div className="flex justify-center mb-4">
-              <div className="w-12 h-1 bg-clinic-sand rounded-full" />
-            </div>
-
-            <p className="text-sm font-medium uppercase tracking-widest text-clinic-teal mb-3">
-              Get in Touch
-            </p>
-
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-clinic-charcoal">
-              We would love to
-              <Underline className="ml-3">hear from you</Underline>
-            </h1>
-
-            <p className="mt-6 text-lg text-clinic-charcoal/70 max-w-2xl mx-auto">
-              Have a question, need to book an appointment, or just want to say
-              hello? We are here to help.
-            </p>
+            <SectionHeading
+              as="h1"
+              size="large"
+              eyebrow="Get in Touch"
+              title="We would love to"
+              highlight="hear from you"
+              underlineSize="lg"
+              description="Have a question, need to book an appointment, or just want to say hello? We are here to help."
+            />
           </motion.div>
         </div>
       </section>
@@ -166,12 +158,11 @@ export default function ContactPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <p className="text-sm font-medium uppercase tracking-widest text-clinic-teal mb-3">
-                Send a Message
-              </p>
-              <h2 className="font-display text-3xl md:text-4xl font-semibold text-clinic-charcoal mb-6">
-                Drop us a line
-              </h2>
+              <SectionHeading
+                variant="sub"
+                eyebrow="Send a Message"
+                title="Drop us a line"
+              />
 
               {isSubmitted ? (
                 <motion.div
@@ -335,10 +326,7 @@ export default function ContactPage() {
                   Skip the form and schedule your appointment online in under 60
                   seconds.
                 </p>
-                <Button
-                  href="/appointment"
-                  lift
-                  size="sm">
+                <Button href="/appointment" lift size="sm">
                   Book Appointment
                 </Button>
               </div>
@@ -376,12 +364,11 @@ export default function ContactPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <p className="text-sm font-medium uppercase tracking-widest text-clinic-teal mb-3">
-              FAQs
-            </p>
-            <h2 className="font-display text-3xl md:text-4xl font-semibold text-clinic-charcoal">
-              Common questions
-            </h2>
+            <SectionHeading
+              variant="sub"
+              eyebrow="FAQs"
+              title="Common questions"
+            />
           </motion.div>
 
           <div className="space-y-4">

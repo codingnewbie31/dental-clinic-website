@@ -2,10 +2,10 @@
 
 import { motion } from "framer-motion";
 import { testimonialsData } from "@/app/lib/data/testimonials";
-import Underline from "@/app/components/ui/Underline";
 import { containerVariants, cardVariants } from "@/app/lib/animations";
 import Card from "@/app/components/ui/Card";
 import Button from "@/app/components/ui/Button";
+import SectionHeading from "@/app/components/ui/SectionHeading";
 
 // Show only first 3 testimonials on homepage
 const previewTestimonials = testimonialsData.slice(0, 3);
@@ -22,23 +22,12 @@ export default function TestimonialsSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          {/* Teal accent line */}
-          <div className="flex justify-center mb-4">
-            <div className="w-12 h-1 bg-clinic-sand rounded-full" />
-          </div>
-
-          <p className="text-sm font-medium uppercase tracking-widest text-clinic-teal mb-3">
-            Patient Stories
-          </p>
-
-          <h2 className="font-display text-4xl md:text-5xl font-semibold text-clinic-charcoal">
-            Real smiles from
-            <Underline className="ml-3">real patients</Underline>
-          </h2>
-
-          <p className="mt-4 text-lg text-clinic-charcoal/70 max-w-2xl mx-auto">
-            Hear from our happy patients about their experience at our clinic.
-          </p>
+          <SectionHeading
+            eyebrow="Patient Stories"
+            title="Real smiles from"
+            highlight="real patients"
+            description="Hear from our happy patients about their experience at our clinic."
+          />
         </motion.div>
 
         {/* Testimonials Grid */}

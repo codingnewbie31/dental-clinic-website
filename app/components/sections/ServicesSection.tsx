@@ -3,11 +3,11 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { servicesData } from "@/app/lib/data/services";
-import Underline from "@/app/components/ui/Underline";
 import { containerVariants, cardVariants } from "@/app/lib/animations";
 import Pill from "@/app/components/ui/Pill";
 import Card from "@/app/components/ui/Card";
 import Button from "@/app/components/ui/Button";
+import SectionHeading from "@/app/components/ui/SectionHeading";
 
 export default function ServicesSection() {
   // Show only first 6 services on homepage
@@ -24,24 +24,12 @@ export default function ServicesSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          {/* Teal accent line */}
-          <div className="flex justify-center mb-4">
-            <div className="w-12 h-1 bg-clinic-sand rounded-full" />
-          </div>
-
-          <p className="text-sm font-medium uppercase tracking-widest text-clinic-teal mb-3">
-            Our Services
-          </p>
-
-          <h2 className="font-display text-4xl md:text-5xl font-semibold text-clinic-charcoal">
-            Expert dental care for
-            <Underline className="ml-3">everyone</Underline>
-          </h2>
-
-          <p className="mt-4 text-lg text-clinic-charcoal/70 max-w-2xl mx-auto">
-            From routine checkups to advanced procedures, we provide
-            comprehensive dental care for every smile.
-          </p>
+          <SectionHeading
+            eyebrow="Our Services"
+            title="Expert dental care for"
+            highlight="everyone"
+            description="From routine checkups to advanced procedures, we provide comprehensive dental care for every smile."
+          />
         </motion.div>
 
         {/* Services Grid */}

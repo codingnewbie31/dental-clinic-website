@@ -1,19 +1,21 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Underline from "@/app/components/ui/Underline";
 import Button from "@/app/components/ui/Button";
+import SectionHeading from "@/app/components/ui/SectionHeading";
 
 const values = [
   {
     icon: "❤️",
     title: "Patient First",
-    description: "Every decision we make starts with what's best for our patients.",
+    description:
+      "Every decision we make starts with what's best for our patients.",
   },
   {
     icon: "🔬",
     title: "Modern Technology",
-    description: "We invest in the latest dental technology for better results.",
+    description:
+      "We invest in the latest dental technology for better results.",
   },
   {
     icon: "🤝",
@@ -69,23 +71,15 @@ export default function AboutPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <div className="flex justify-center mb-4">
-              <div className="w-12 h-1 bg-clinic-sand rounded-full" />
-            </div>
-
-            <p className="text-sm font-medium uppercase tracking-widest text-clinic-teal mb-3">
-              About Us
-            </p>
-
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-clinic-charcoal">
-              Caring for smiles
-              <Underline className="ml-3">since 2014</Underline>
-            </h1>
-
-            <p className="mt-6 text-lg text-clinic-charcoal/70 max-w-2xl mx-auto">
-              We are a team of passionate dental professionals dedicated to
-              providing exceptional care in a warm, welcoming environment.
-            </p>
+            <SectionHeading
+              as="h1"
+              size="large"
+              eyebrow="About Us"
+              title="Caring for smiles"
+              highlight="since 2014"
+              underlineSize="lg"
+              description="We are a team of passionate dental professionals dedicated to providing exceptional care in a warm, welcoming environment."
+            />
           </motion.div>
         </div>
       </section>
@@ -114,20 +108,18 @@ export default function AboutPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <p className="text-sm font-medium uppercase tracking-widest text-clinic-teal mb-3">
-                Our Story
-              </p>
-
-              <h2 className="font-display text-3xl md:text-4xl font-semibold text-clinic-charcoal mb-6">
-                A decade of creating healthy smiles
-              </h2>
+              <SectionHeading
+                variant="sub"
+                eyebrow="Our Story"
+                title="A decade of creating healthy smiles"
+              />
 
               <div className="space-y-4 text-clinic-charcoal/70 leading-relaxed">
                 <p>
-                  What started as a small family practice in 2014 has grown
-                  into one of the most trusted dental clinics in the city. Our
-                  founder, Dr. Sarah Ahmed, believed that dental care should
-                  be gentle, transparent, and accessible to everyone.
+                  What started as a small family practice in 2014 has grown into
+                  one of the most trusted dental clinics in the city. Our
+                  founder, Dr. Sarah Ahmed, believed that dental care should be
+                  gentle, transparent, and accessible to everyone.
                 </p>
                 <p>
                   Today, we combine that founding philosophy with cutting-edge
@@ -141,19 +133,10 @@ export default function AboutPage() {
               </div>
 
               <div className="mt-8 flex flex-wrap gap-4">
-                <Button
-                  href="/doctors"
-                  size="sm"
-                  lift
-                  >
+                <Button href="/doctors" size="sm" lift>
                   Meet Our Team
                 </Button>
-                <Button
-                  href="/appointment"
-                  size="sm"
-                  variant="ghost"
-                  lift
-                  >
+                <Button href="/appointment" size="sm" variant="ghost" lift>
                   Book a Visit
                 </Button>
               </div>
@@ -197,12 +180,11 @@ export default function AboutPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <p className="text-sm font-medium uppercase tracking-widest text-clinic-teal mb-3">
-              What We Stand For
-            </p>
-            <h2 className="font-display text-3xl md:text-4xl font-semibold text-clinic-charcoal">
-              Our core values
-            </h2>
+            <SectionHeading
+              variant="sub"
+              eyebrow="What We Stand For"
+              title="Our core values"
+            />
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -240,12 +222,11 @@ export default function AboutPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <p className="text-sm font-medium uppercase tracking-widest text-clinic-teal mb-3">
-              Our Team
-            </p>
-            <h2 className="font-display text-3xl md:text-4xl font-semibold text-clinic-charcoal">
-              Meet the experts behind your smile
-            </h2>
+            <SectionHeading
+              variant="sub"
+              eyebrow="Our Team"
+              title="Meet the experts behind your smile"
+            />
           </motion.div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -270,9 +251,7 @@ export default function AboutPage() {
           </div>
 
           <div className="text-center mt-12">
-            <Button
-              href="/doctors"
-              lift>
+            <Button href="/doctors" lift>
               View Full Team
             </Button>
           </div>
