@@ -8,6 +8,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { heroSlides } from "@/app/lib/data/heroSlides";
 import Underline from "@/app/components/ui/Underline";
+import Button from "@/app/components/ui/Button";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
@@ -130,12 +131,9 @@ export default function HeroSection() {
                           >
                             {slide.ctaLabel}
                           </Link>
-                          <Link
-                            href={slide.secondaryHref}
-                            className="rounded-full px-8 py-3.5 text-clinic-teal ring-1 ring-inset ring-clinic-teal/30 transition-all hover:bg-clinic-teal/5 hover:ring-clinic-teal"
-                          >
+                          <Button href={slide.secondaryHref} variant="ghost-ring">
                             {slide.secondaryLabel}
-                          </Link>
+                          </Button>
                         </motion.div>
                       </motion.div>
                     )}

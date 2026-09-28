@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 import Underline from "@/app/components/ui/Underline";
+import Button from "@/app/components/ui/Button";
 
 const values = [
   {
@@ -141,18 +141,21 @@ export default function AboutPage() {
               </div>
 
               <div className="mt-8 flex flex-wrap gap-4">
-                <Link
+                <Button
                   href="/doctors"
-                  className="inline-block bg-clinic-teal text-white px-6 py-3 rounded-full font-medium hover:bg-clinic-teal-dark transition-all"
-                >
+                  size="sm"
+                  lift
+                  >
                   Meet Our Team
-                </Link>
-                <Link
+                </Button>
+                <Button
                   href="/appointment"
-                  className="inline-block text-clinic-teal px-6 py-3 rounded-full font-medium border border-clinic-teal/30 hover:bg-clinic-teal/5 transition-all"
-                >
+                  size="sm"
+                  variant="ghost"
+                  lift
+                  >
                   Book a Visit
-                </Link>
+                </Button>
               </div>
             </motion.div>
           </div>
@@ -267,12 +270,11 @@ export default function AboutPage() {
           </div>
 
           <div className="text-center mt-12">
-            <Link
+            <Button
               href="/doctors"
-              className="inline-block bg-clinic-teal text-white px-8 py-3.5 rounded-full font-medium hover:bg-clinic-teal-dark transition-all"
-            >
+              lift>
               View Full Team
-            </Link>
+            </Button>
           </div>
         </div>
       </section>

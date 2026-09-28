@@ -7,6 +7,7 @@ import Underline from "@/app/components/ui/Underline";
 import { containerVariants, cardVariants } from "@/app/lib/animations";
 import Pill from "@/app/components/ui/Pill";
 import Card from "@/app/components/ui/Card";
+import Button from "@/app/components/ui/Button";
 
 export default function ServicesSection() {
   // Show only first 6 services on homepage
@@ -53,13 +54,12 @@ export default function ServicesSection() {
         >
           {previewServices.map((service) => (
             <Card
-  key={service.id}
-  variants={cardVariants}
-  whileHover={{ y: -8 }}
-  transition={{ duration: 0.3 }}
-  className="group p-8"
->
-
+              key={service.id}
+              variants={cardVariants}
+              whileHover={{ y: -8 }}
+              transition={{ duration: 0.3 }}
+              className="group p-8"
+            >
               <Link
                 href={`/services/${service.slug}`}
                 className="flex h-full flex-col"
@@ -160,12 +160,9 @@ export default function ServicesSection() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-center mt-12"
         >
-          <Link
-            href="/services"
-            className="inline-block bg-clinic-teal text-white px-8 py-3.5 rounded-full font-medium hover:bg-clinic-teal-dark transition-all hover:scale-105 shadow-sm hover:shadow-md"
-          >
+          <Button href="/services" lift>
             View All Services
-          </Link>
+          </Button>
         </motion.div>
       </div>
     </section>

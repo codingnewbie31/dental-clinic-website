@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { servicesData } from "@/app/lib/data/services";
 import Underline from "@/app/components/ui/Underline";
 import Card from "@/app/components/ui/Card";
+import Button from "@/app/components/ui/Button";
 
 export default function ServicesPage() {
   return (
@@ -109,12 +110,12 @@ export default function ServicesPage() {
           <p className="text-clinic-charcoal/70 mb-4">
             Ready to schedule your appointment?
           </p>
-          <Link
+          <Button
             href="/appointment"
             className="inline-block bg-clinic-teal text-white px-8 py-3.5 rounded-full font-medium hover:bg-clinic-teal-dark transition-all hover:scale-105 shadow-sm hover:shadow-md"
           >
             Book Your Appointment
-          </Link>
+          </Button>
         </motion.div>
       </div>
     </section>

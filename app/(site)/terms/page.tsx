@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
+import Button from "@/app/components/ui/Button";
 
 const sections = [
   {
@@ -184,18 +184,21 @@ export default function TermsPage() {
               Feel free to reach out — we are happy to clarify anything.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4">
-              <Link
+              <Button
                 href="/contact"
-                className="bg-clinic-teal text-white px-6 py-3 rounded-full font-medium hover:bg-clinic-teal-dark transition-all"
-              >
+                size="sm"
+                lift
+                >
                 Contact Us
-              </Link>
-              <Link
+              </Button>
+              <Button
                 href="/"
-                className="text-clinic-teal px-6 py-3 rounded-full font-medium border border-clinic-teal/30 hover:bg-clinic-teal/5 transition-all"
-              >
+                variant="ghost"
+                size="sm"
+                lift
+                >
                 Back to Home
-              </Link>
+              </Button>
             </div>
           </motion.div>
         </div>

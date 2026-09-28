@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import Underline from "@/app/components/ui/Underline";
 import Card from "@/app/components/ui/Card";
+import Button from "@/app/components/ui/Button";
 interface ContactFormData {
   name: string;
   email: string;
@@ -335,12 +335,12 @@ export default function ContactPage() {
                   Skip the form and schedule your appointment online in under 60
                   seconds.
                 </p>
-                <Link
+                <Button
                   href="/appointment"
-                  className="inline-block bg-clinic-teal text-white px-6 py-3 rounded-full font-medium hover:bg-clinic-teal-dark transition-all"
-                >
+                  lift
+                  size="sm">
                   Book Appointment
-                </Link>
+                </Button>
               </div>
 
               {/* Emergency Contact */}

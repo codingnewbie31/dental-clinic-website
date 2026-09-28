@@ -1,11 +1,11 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { doctorsData } from "@/app/lib/data/doctors";
 import Pill from "@/app/components/ui/Pill";
+import Button from "@/app/components/ui/Button";
 
 export default function DoctorDetailPage() {
   const params = useParams();
@@ -30,10 +30,10 @@ export default function DoctorDetailPage() {
             removed.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Link
+            <Button
               href="/"
-              className="inline-flex items-center gap-2 bg-clinic-teal text-white px-6 py-3 rounded-full font-medium hover:bg-clinic-teal-dark transition-all hover:scale-105 shadow-sm hover:shadow-md"
-            >
+              lift 
+              >
               <svg
                 className="w-4 h-4"
                 fill="none"
@@ -48,11 +48,11 @@ export default function DoctorDetailPage() {
                 />
               </svg>
               Back to home
-            </Link>
-            <Link
+            </Button>
+            <Button
               href="/doctors"
-              className="inline-flex items-center gap-2 bg-white border border-clinic-teal text-clinic-teal px-6 py-3 rounded-full font-medium hover:bg-clinic-teal hover:text-white transition-all hover:scale-105 shadow-sm hover:shadow-md"
-            >
+              variant="outline"
+              lift>
               <svg
                 className="w-4 h-4"
                 fill="none"
@@ -67,7 +67,7 @@ export default function DoctorDetailPage() {
                 />
               </svg>
               Browse all doctors
-            </Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -79,10 +79,8 @@ export default function DoctorDetailPage() {
       <div className="mx-auto max-w-4xl px-6">
         {/* Navigation */}
         <div className="flex flex-wrap items-center gap-3 mb-8">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-clinic-charcoal/60 hover:text-clinic-teal transition-colors"
-          >
+          <Button
+            href="/" lift>
             <svg
               className="w-4 h-4"
               fill="none"
@@ -97,12 +95,9 @@ export default function DoctorDetailPage() {
               />
             </svg>
             Back to home
-          </Link>
+          </Button>
           <span className="text-clinic-charcoal/20">|</span>
-          <Link
-            href="/doctors"
-            className="inline-flex items-center gap-2 text-clinic-charcoal/60 hover:text-clinic-teal transition-colors"
-          >
+          <Button href="/doctors" variant="outline" size="sm" lift>
             <svg
               className="w-4 h-4"
               fill="none"
@@ -117,7 +112,7 @@ export default function DoctorDetailPage() {
               />
             </svg>
             All doctors
-          </Link>
+          </Button>
         </div>
 
         {/* Doctor Profile */}
@@ -176,18 +171,19 @@ export default function DoctorDetailPage() {
 
               {/* CTA Buttons */}
               <div className="mt-8 flex flex-wrap gap-4">
-                <Link
-                  href="/appointment"
-                  className="inline-block bg-clinic-teal text-white px-8 py-3.5 rounded-full font-medium hover:bg-clinic-teal-dark transition-all hover:scale-105 shadow-sm hover:shadow-md"
+                <Button 
+                href="/appointment" 
+                lift
                 >
                   Book Appointment
-                </Link>
-                <Link
+                </Button>
+                <Button
                   href="/services"
-                  className="inline-block bg-white border border-clinic-teal text-clinic-teal px-8 py-3.5 rounded-full font-medium hover:bg-clinic-teal hover:text-white transition-all hover:scale-105 shadow-sm hover:shadow-md"
+                  variant="outline"
+                  lift
                 >
                   View Services
-                </Link>
+                </Button>
               </div>
             </div>
           </div>

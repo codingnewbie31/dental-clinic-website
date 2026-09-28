@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { testimonialsData } from "@/app/lib/data/testimonials";
 import Underline from "@/app/components/ui/Underline";
+import Button from "@/app/components/ui/Button";
 
 export default function TestimonialsPage() {
   return (
@@ -93,12 +93,11 @@ export default function TestimonialsPage() {
           <p className="text-clinic-charcoal/70 mb-4">
             Ready to become our next happy patient?
           </p>
-          <Link
+          <Button
             href="/appointment"
-            className="inline-block bg-clinic-teal text-white px-8 py-3.5 rounded-full font-medium hover:bg-clinic-teal-dark transition-all hover:scale-105 shadow-sm hover:shadow-md"
-          >
+            lift>
             Book an Appointment
-          </Link>
+          </Button>
         </motion.div>
       </div>
     </section>

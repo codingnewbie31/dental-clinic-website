@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { servicesData } from "@/app/lib/data/services";
 import Underline from "@/app/components/ui/Underline";
+import Button from "@/app/components/ui/Button";
 interface AppointmentFormData {
   fullName: string;
   email: string;
@@ -60,8 +61,26 @@ export default function AppointmentPage() {
   const [step, setStep] = useState(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  const topRef = useRef<HTMLDivElement>(null);
+  const formTopRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+  if (isSubmitted) {
+    // rAF ensures layout has settled with the new success card
+    requestAnimationFrame(() => {
+      topRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }
+}, [isSubmitted]);
+
+useEffect(() => {
+  formTopRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+}, [step]);
+
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -89,7 +108,7 @@ export default function AppointmentPage() {
   // Success State
   if (isSubmitted) {
     return (
-      <section className="py-24 bg-clinic-ivory min-h-screen">
+      <section ref={topRef} className="py-24 bg-clinic-ivory min-h-screen scroll-mt-4">
         <div className="mx-auto max-w-2xl px-6">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -104,14 +123,17 @@ export default function AppointmentPage() {
               Appointment Requested!
             </h1>
             <p className="text-clinic-charcoal/70 mb-8">
-              Thank you, <strong>{formData.fullName}</strong>. We have received your
-              appointment request and will confirm it via email or phone shortly.
+              Thank you, <strong>{formData.fullName}</strong>. We have received
+              your appointment request and will confirm it via email or phone
+              shortly.
             </p>
 
             <div className="bg-clinic-ivory rounded-2xl p-6 text-left space-y-3 mb-8">
               <div className="flex justify-between text-sm">
                 <span className="text-clinic-charcoal/60">Service</span>
-                <span className="font-medium text-clinic-charcoal">{formData.service}</span>
+                <span className="font-medium text-clinic-charcoal">
+                  {formData.service}
+                </span>
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-clinic-charcoal/60">Doctor</span>
@@ -121,22 +143,23 @@ export default function AppointmentPage() {
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-clinic-charcoal/60">Date</span>
-                <span className="font-medium text-clinic-charcoal">{formData.date}</span>
+                <span className="font-medium text-clinic-charcoal">
+                  {formData.date}
+                </span>
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-clinic-charcoal/60">Time</span>
-                <span className="font-medium text-clinic-charcoal">{formData.time}</span>
+                <span className="font-medium text-clinic-charcoal">
+                  {formData.time}
+                </span>
               </div>
             </div>
 
             <div className="flex flex-wrap items-center justify-center gap-4">
-              <Link
-                href="/"
-                className="bg-clinic-teal text-white px-6 py-3 rounded-full font-medium hover:bg-clinic-teal-dark transition-all"
-              >
+              <Button href="/" size="sm" lift>
                 Back to Home
-              </Link>
-              <button
+              </Button>
+              <Button
                 onClick={() => {
                   setIsSubmitted(false);
                   setStep(1);
@@ -151,10 +174,12 @@ export default function AppointmentPage() {
                     notes: "",
                   });
                 }}
-                className="text-clinic-teal px-6 py-3 rounded-full font-medium border border-clinic-teal/30 hover:bg-clinic-teal/5 transition-all"
-              >
+                variant="ghost"
+                lift
+                size="sm"
+                >
                 Book Another
-              </button>
+              </Button>
             </div>
           </motion.div>
         </div>
@@ -196,7 +221,7 @@ export default function AppointmentPage() {
 
       {/* Booking Form */}
       <section className="py-12 bg-white">
-        <div className="mx-auto max-w-4xl px-6">
+        <div ref={formTopRef} className="mx-auto max-w-4xl px-6 scroll-mt-24">
           {/* Progress Steps */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -295,18 +320,28 @@ export default function AppointmentPage() {
                 {/* Selected Service Display */}
                 <div className="bg-clinic-teal/5 border border-clinic-teal/10 rounded-2xl p-4 mb-6 flex items-center gap-3">
                   <span className="text-2xl">
-                    {servicesData.find((s) => s.title === formData.service)?.icon}
+                    {
+                      servicesData.find((s) => s.title === formData.service)
+                        ?.icon
+                    }
                   </span>
                   <div>
-                    <p className="text-xs text-clinic-charcoal/60">Selected Service</p>
-                    <p className="font-medium text-clinic-charcoal">{formData.service}</p>
+                    <p className="text-xs text-clinic-charcoal/60">
+                      Selected Service
+                    </p>
+                    <p className="font-medium text-clinic-charcoal">
+                      {formData.service}
+                    </p>
                   </div>
                 </div>
 
                 <div className="space-y-6">
                   {/* Date */}
                   <div>
-                    <label htmlFor="date" className="block text-sm font-medium text-clinic-charcoal mb-2">
+                    <label
+                      htmlFor="date"
+                      className="block text-sm font-medium text-clinic-charcoal mb-2"
+                    >
                       Preferred Date
                     </label>
                     <input
@@ -346,7 +381,10 @@ export default function AppointmentPage() {
 
                   {/* Doctor */}
                   <div>
-                    <label htmlFor="doctor" className="block text-sm font-medium text-clinic-charcoal mb-2">
+                    <label
+                      htmlFor="doctor"
+                      className="block text-sm font-medium text-clinic-charcoal mb-2"
+                    >
                       Preferred Doctor
                     </label>
                     <select
@@ -403,7 +441,9 @@ export default function AppointmentPage() {
                 <div className="bg-clinic-teal/5 border border-clinic-teal/10 rounded-2xl p-4 mb-6 space-y-2">
                   <div className="flex justify-between text-sm">
                     <span className="text-clinic-charcoal/60">Service</span>
-                    <span className="font-medium text-clinic-charcoal">{formData.service}</span>
+                    <span className="font-medium text-clinic-charcoal">
+                      {formData.service}
+                    </span>
                   </div>
                   <div className="flex justify-between text-sm">
                     <span className="text-clinic-charcoal/60">Date & Time</span>
@@ -415,7 +455,10 @@ export default function AppointmentPage() {
 
                 <div className="space-y-5">
                   <div>
-                    <label htmlFor="fullName" className="block text-sm font-medium text-clinic-charcoal mb-2">
+                    <label
+                      htmlFor="fullName"
+                      className="block text-sm font-medium text-clinic-charcoal mb-2"
+                    >
                       Full Name
                     </label>
                     <input
@@ -432,7 +475,10 @@ export default function AppointmentPage() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-clinic-charcoal mb-2">
+                      <label
+                        htmlFor="email"
+                        className="block text-sm font-medium text-clinic-charcoal mb-2"
+                      >
                         Email
                       </label>
                       <input
@@ -447,7 +493,10 @@ export default function AppointmentPage() {
                       />
                     </div>
                     <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-clinic-charcoal mb-2">
+                      <label
+                        htmlFor="phone"
+                        className="block text-sm font-medium text-clinic-charcoal mb-2"
+                      >
                         Phone
                       </label>
                       <input
@@ -464,7 +513,10 @@ export default function AppointmentPage() {
                   </div>
 
                   <div>
-                    <label htmlFor="notes" className="block text-sm font-medium text-clinic-charcoal mb-2">
+                    <label
+                      htmlFor="notes"
+                      className="block text-sm font-medium text-clinic-charcoal mb-2"
+                    >
                       Additional Notes (Optional)
                     </label>
                     <textarea
@@ -487,7 +539,10 @@ export default function AppointmentPage() {
 
                   <p className="text-xs text-center text-clinic-charcoal/50">
                     By booking, you agree to our{" "}
-                    <Link href="/terms" className="text-clinic-teal hover:underline">
+                    <Link
+                      href="/terms"
+                      className="text-clinic-teal hover:underline"
+                    >
                       Terms of Service
                     </Link>
                   </p>

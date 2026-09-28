@@ -7,34 +7,12 @@ import { doctorsData } from "@/app/lib/data/doctors";
 import Underline from "@/app/components/ui/Underline";
 import Pill from "@/app/components/ui/Pill";
 import Card from "@/app/components/ui/Card";
+import Button from "@/app/components/ui/Button";
 
 export default function DoctorsPage() {
   return (
     <section className="py-24 bg-clinic-ivory">
       <div className="mx-auto max-w-6xl px-6">
-        {/* Navigation */}
-        <div className="flex flex-wrap items-center gap-3 mb-8">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-clinic-charcoal/60 hover:text-clinic-teal transition-colors"
-          >
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-              />
-            </svg>
-            Back to home
-          </Link>
-        </div>
-
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -144,12 +122,9 @@ export default function DoctorsPage() {
           <p className="text-clinic-charcoal/70 mb-4">
             Ready to meet your new dentist?
           </p>
-          <Link
-            href="/appointment"
-            className="inline-block bg-clinic-teal text-white px-8 py-3.5 rounded-full font-medium hover:bg-clinic-teal-dark transition-all hover:scale-105 shadow-sm hover:shadow-md"
-          >
+          <Button href="/appointment" lift>
             Book an Appointment
-          </Link>
+          </Button>
         </motion.div>
       </div>
     </section>

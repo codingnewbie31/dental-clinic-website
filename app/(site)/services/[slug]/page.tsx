@@ -1,9 +1,9 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { servicesData } from "@/app/lib/data/services";
+import Button from "@/app/components/ui/Button";
 
 export default function ServiceDetailPage() {
   const params = useParams();
@@ -17,12 +17,12 @@ export default function ServiceDetailPage() {
         <h1 className="text-2xl font-bold text-clinic-charcoal">
           Service not found
         </h1>
-        <Link
+        <Button
           href="/services"
-          className="text-clinic-teal hover:underline mt-4 inline-block"
+          lift
         >
           ← Back to services
-        </Link>
+        </Button>
       </div>
     );
   }
@@ -32,10 +32,9 @@ export default function ServiceDetailPage() {
       <div className="mx-auto max-w-4xl px-6">
         {/* Navigation Options - Home & Services */}
         <div className="flex flex-wrap items-center gap-3 mb-8">
-          <Link
+          <Button
             href="/"
-            className="inline-flex items-center gap-2 text-clinic-teal hover:text-clinic-teal-dark transition-colors"
-          >
+            lift>
             <svg
               className="w-4 h-4"
               fill="none"
@@ -50,14 +49,15 @@ export default function ServiceDetailPage() {
               />
             </svg>
             Back to home
-          </Link>
+          </Button>
 
           <span className="text-clinic-charcoal/20">|</span>
 
-          <Link
+          <Button
             href="/services"
-            className="inline-flex items-center gap-2 text-clinic-teal hover:text-clinic-teal-dark transition-colors"
-          >
+            variant="outline"
+            lift
+            >
             <svg
               className="w-4 h-4"
               fill="none"
@@ -72,7 +72,7 @@ export default function ServiceDetailPage() {
               />
             </svg>
             All services
-          </Link>
+          </Button>
         </div>
 
         {/* Service Header */}
@@ -178,12 +178,12 @@ export default function ServiceDetailPage() {
           <p className="text-clinic-charcoal/70 mt-2 mb-6">
             Book your appointment today and get the care you deserve.
           </p>
-          <Link
+          <Button
             href="/appointment"
-            className="inline-block bg-clinic-teal text-white px-8 py-3.5 rounded-full font-medium hover:bg-clinic-teal-dark transition-all hover:scale-105 shadow-sm hover:shadow-md"
-          >
+            lift
+            >
             Book Appointment
-          </Link>
+          </Button>
         </motion.div>
       </div>
     </section>

@@ -8,6 +8,7 @@ import Underline from "@/app/components/ui/Underline";
 import { containerVariants, cardVariants } from "@/app/lib/animations";
 import Pill from "@/app/components/ui/Pill";
 import Card from "@/app/components/ui/Card";
+import Button from "@/app/components/ui/Button";
 
 export default function DoctorsSection() {
   // Show only first 4 doctors on homepage
@@ -134,12 +135,9 @@ export default function DoctorsSection() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-center mt-12"
         >
-          <Link
-            href="/doctors"
-            className="inline-block bg-clinic-teal text-white px-8 py-3.5 rounded-full font-medium hover:bg-clinic-teal-dark transition-all hover:scale-105 shadow-sm hover:shadow-md"
-          >
+          <Button href="/doctors" lift>
             Meet Our Team
-          </Link>
+          </Button>
         </motion.div>
       </div>
     </section>
