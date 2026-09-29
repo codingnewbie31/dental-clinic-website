@@ -1,7 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Button from "@/app/components/ui/Button";
+import Card from "@/app/components/ui/Card";
 import SectionHeading from "@/app/components/ui/SectionHeading";
 import { aboutValues } from "@/app/lib/data/aboutValues";
 import { aboutStats } from "@/app/lib/data/aboutStats";
@@ -14,17 +16,10 @@ const teamRoleLabels: Record<string, string> = {
   "4": "Endodontist",
 };
 
-const teamEmojis: Record<string, string> = {
-  "1": "👩‍⚕️",
-  "2": "👨‍⚕️",
-  "3": "👩‍⚕️",
-  "4": "👨‍⚕️",
-};
-
 const team = doctorsData.map((doctor) => ({
   name: doctor.name,
   role: teamRoleLabels[doctor.id] ?? doctor.specialty,
-  image: teamEmojis[doctor.id] ?? "🦷",
+  image: doctor.image,
 }));
 
 export default function AboutPage() {
@@ -197,24 +192,30 @@ export default function AboutPage() {
             />
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {team.map((member, index) => (
-              <motion.div
+              <Card
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="text-center"
+                className="text-center p-6"
               >
-                <div className="aspect-square rounded-2xl bg-clinic-sage/40 flex items-center justify-center text-6xl mb-4">
-                  {member.image}
+                <div className="relative aspect-square rounded-2xl overflow-hidden bg-clinic-sage/40 mb-4">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                  />
                 </div>
                 <h3 className="font-display font-semibold text-clinic-charcoal">
                   {member.name}
                 </h3>
                 <p className="text-sm text-clinic-charcoal/60">{member.role}</p>
-              </motion.div>
+              </Card>
             ))}
           </div>
 
