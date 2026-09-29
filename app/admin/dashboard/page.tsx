@@ -2,21 +2,9 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { adminStats, adminRecentAppointments } from "@/app/lib/data/adminDashboard";
 
-const stats = [
-  { label: "Total Appointments", value: "1,247", change: "+12%", icon: "📅", color: "clinic-teal" },
-  { label: "Active Doctors", value: "8", change: "0", icon: "👨‍⚕️", color: "clinic-sage" },
-  { label: "Services Offered", value: "8", change: "0", icon: "🦷", color: "clinic-sand" },
-  { label: "Total Patients", value: "512", change: "+8%", icon: "👥", color: "clinic-charcoal" },
-];
 
-const recentAppointments = [
-  { id: "1", name: "Sarah Khan", service: "General Dentistry", doctor: "Dr. Sarah Ahmed", date: "Today, 3:00 PM", status: "pending" },
-  { id: "2", name: "Ahmed Malik", service: "Cosmetic Dentistry", doctor: "Dr. Ayesha Malik", date: "Tomorrow, 10:00 AM", status: "confirmed" },
-  { id: "3", name: "Fatima Ali", service: "Orthodontics", doctor: "Dr. Usman Khan", date: "Dec 20, 2:00 PM", status: "confirmed" },
-  { id: "4", name: "Hassan Raza", service: "Emergency Care", doctor: "Any Available", date: "Today, 5:30 PM", status: "pending" },
-  { id: "5", name: "Zainab Iqbal", service: "Pediatric Dentistry", doctor: "Dr. Bilal Hassan", date: "Dec 21, 11:00 AM", status: "completed" },
-];
 
 const statusColors: Record<string, string> = {
   pending: "bg-yellow-100 text-yellow-800",
@@ -50,7 +38,7 @@ export default function AdminDashboardPage() {
         transition={{ duration: 0.5, delay: 0.1 }}
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8"
       >
-        {stats.map((stat, index) => (
+        {adminStats.map((stat, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, y: 20 }}
@@ -122,7 +110,7 @@ export default function AdminDashboardPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-clinic-sage/20">
-              {recentAppointments.map((apt) => (
+              {adminRecentAppointments.map((apt) => (
                 <tr key={apt.id} className="hover:bg-clinic-ivory/50 transition-colors">
                   <td className="px-6 py-4 text-sm font-medium text-clinic-charcoal">
                     {apt.name}

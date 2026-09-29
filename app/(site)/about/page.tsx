@@ -3,61 +3,29 @@
 import { motion } from "framer-motion";
 import Button from "@/app/components/ui/Button";
 import SectionHeading from "@/app/components/ui/SectionHeading";
+import { aboutValues } from "@/app/lib/data/aboutValues";
+import { aboutStats } from "@/app/lib/data/aboutStats";
+import { doctorsData } from "@/app/lib/data/doctors";
 
-const values = [
-  {
-    icon: "❤️",
-    title: "Patient First",
-    description:
-      "Every decision we make starts with what's best for our patients.",
-  },
-  {
-    icon: "🔬",
-    title: "Modern Technology",
-    description:
-      "We invest in the latest dental technology for better results.",
-  },
-  {
-    icon: "🤝",
-    title: "Trust & Transparency",
-    description: "Clear pricing, honest advice, and no hidden surprises.",
-  },
-  {
-    icon: "✨",
-    title: "Excellence",
-    description: "We don't settle for good when we can achieve great.",
-  },
-];
+const teamRoleLabels: Record<string, string> = {
+  "1": "Chief Dental Surgeon",
+  "2": "Orthodontist",
+  "3": "Cosmetic Dentist",
+  "4": "Endodontist",
+};
 
-const stats = [
-  { number: "10+", label: "Years of Experience" },
-  { number: "500+", label: "Happy Patients" },
-  { number: "8", label: "Expert Dentists" },
-  { number: "98%", label: "Satisfaction Rate" },
-];
+const teamEmojis: Record<string, string> = {
+  "1": "👩‍⚕️",
+  "2": "👨‍⚕️",
+  "3": "👩‍⚕️",
+  "4": "👨‍⚕️",
+};
 
-const team = [
-  {
-    name: "Dr. Sarah Ahmed",
-    role: "Chief Dental Surgeon",
-    image: "👩‍⚕️",
-  },
-  {
-    name: "Dr. Usman Khan",
-    role: "Orthodontist",
-    image: "👨‍⚕️",
-  },
-  {
-    name: "Dr. Ayesha Malik",
-    role: "Cosmetic Dentist",
-    image: "👩‍⚕️",
-  },
-  {
-    name: "Dr. Bilal Hassan",
-    role: "Pediatric Dentist",
-    image: "👨‍⚕️",
-  },
-];
+const team = doctorsData.map((doctor) => ({
+  name: doctor.name,
+  role: teamRoleLabels[doctor.id] ?? doctor.specialty,
+  image: teamEmojis[doctor.id] ?? "🦷",
+}));
 
 export default function AboutPage() {
   return (
@@ -149,7 +117,7 @@ export default function AboutPage() {
       <section className="py-16 bg-clinic-teal/5">
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
+            {aboutStats.map((stat, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -188,7 +156,7 @@ export default function AboutPage() {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {values.map((value, index) => (
+            {aboutValues.map((value, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}

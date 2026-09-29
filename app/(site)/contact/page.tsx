@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import Card from "@/app/components/ui/Card";
 import Button from "@/app/components/ui/Button";
 import SectionHeading from "@/app/components/ui/SectionHeading";
+import { contactInfo } from "@/app/lib/data/contactInfo";
+import { faqs } from "@/app/lib/data/faqs";
 interface ContactFormData {
   name: string;
   email: string;
@@ -12,52 +14,6 @@ interface ContactFormData {
   subject: string;
   message: string;
 }
-
-const contactInfo = [
-  {
-    icon: "📍",
-    title: "Visit Us",
-    lines: ["123 Dental Street", "Gulberg III, Lahore", "Pakistan"],
-  },
-  {
-    icon: "📞",
-    title: "Call Us",
-    lines: ["+92 300 1234567", "+92 42 35789000"],
-  },
-  {
-    icon: "✉️",
-    title: "Email Us",
-    lines: ["info@dentalclinic.com", "appointments@dentalclinic.com"],
-  },
-  {
-    icon: "🕐",
-    title: "Working Hours",
-    lines: ["Mon - Sat: 9:00 AM - 8:00 PM", "Sunday: Closed"],
-  },
-];
-
-const faqs = [
-  {
-    question: "How do I book an appointment?",
-    answer:
-      "You can book online through our appointment page, call us directly, or visit the clinic in person.",
-  },
-  {
-    question: "Do you accept walk-ins?",
-    answer:
-      "Yes, we accept walk-ins, but we recommend booking an appointment to minimize waiting time.",
-  },
-  {
-    question: "What payment methods do you accept?",
-    answer:
-      "We accept cash, all major debit/credit cards, and bank transfers. Easy installment plans are available for major treatments.",
-  },
-  {
-    question: "Is parking available?",
-    answer:
-      "Yes, we have free parking available for all patients right outside the clinic.",
-  },
-];
 
 export default function ContactPage() {
   const [formData, setFormData] = useState<ContactFormData>({

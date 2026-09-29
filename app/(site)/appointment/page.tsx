@@ -6,6 +6,8 @@ import Link from "next/link";
 import { servicesData } from "@/app/lib/data/services";
 import Button from "@/app/components/ui/Button";
 import SectionHeading from "@/app/components/ui/SectionHeading";
+import { timeSlots } from "@/app/lib/data/timeSlots";
+import { doctorsData } from "@/app/lib/data/doctors";
 interface AppointmentFormData {
   fullName: string;
   email: string;
@@ -19,31 +21,10 @@ interface AppointmentFormData {
 
 const doctors = [
   { id: "any", name: "Any Available Doctor" },
-  { id: "sarah-ahmed", name: "Dr. Sarah Ahmed - Chief Dental Surgeon" },
-  { id: "usman-khan", name: "Dr. Usman Khan - Orthodontist" },
-  { id: "ayesha-malik", name: "Dr. Ayesha Malik - Cosmetic Dentist" },
-  { id: "bilal-hassan", name: "Dr. Bilal Hassan - Pediatric Dentist" },
-];
-
-const timeSlots = [
-  "09:00 AM",
-  "09:30 AM",
-  "10:00 AM",
-  "10:30 AM",
-  "11:00 AM",
-  "11:30 AM",
-  "12:00 PM",
-  "02:00 PM",
-  "02:30 PM",
-  "03:00 PM",
-  "03:30 PM",
-  "04:00 PM",
-  "04:30 PM",
-  "05:00 PM",
-  "05:30 PM",
-  "06:00 PM",
-  "06:30 PM",
-  "07:00 PM",
+  ...doctorsData.map((doctor) => ({
+    id: doctor.id,
+    name: `${doctor.name} - ${doctor.specialty}`,
+  })),
 ];
 
 export default function AppointmentPage() {
