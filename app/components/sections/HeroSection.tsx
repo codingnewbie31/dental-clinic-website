@@ -5,7 +5,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
+import ImageWithFallback from "@/app/components/ui/ImageWithFallback";
 import { heroSlides } from "@/app/lib/data/heroSlides";
 import Underline from "@/app/components/ui/Underline";
 import Button from "@/app/components/ui/Button";
@@ -76,7 +76,7 @@ export default function HeroSection() {
       <div className="absolute -left-20 -bottom-20 h-80 w-80 rounded-full bg-clinic-sand/10 blur-3xl" />
 
       <div className="overflow-hidden" ref={emblaRef}>
-        <div className="flex">
+        <div className="flex items-stretch">
           {heroSlides.map((slide, index) => (
             <div className="min-w-0 flex-[0_0_100%]" key={index}>
               <div className="relative mx-auto grid max-w-6xl grid-cols-1 items-stretch gap-12 px-6 py-12 md:grid-cols-2 md:py-16">
@@ -109,7 +109,9 @@ export default function HeroSection() {
                           className="font-display text-4xl leading-tight text-clinic-charcoal md:text-5xl lg:text-6xl"
                         >
                           {slide.headline}
-                          <Underline className="ml-3">{slide.highlight}</Underline>
+                          <Underline className="ml-3">
+                            {slide.highlight}
+                          </Underline>
                         </motion.h1>
 
                         <motion.p
@@ -131,7 +133,10 @@ export default function HeroSection() {
                           >
                             {slide.ctaLabel}
                           </Link>
-                          <Button href={slide.secondaryHref} variant="ghost-ring">
+                          <Button
+                            href={slide.secondaryHref}
+                            variant="ghost-ring"
+                          >
                             {slide.secondaryLabel}
                           </Button>
                         </motion.div>
@@ -141,14 +146,14 @@ export default function HeroSection() {
                 </div>
 
                 {/* Image column */}
-                <div className="relative h-64 w-full overflow-hidden rounded-2xl bg-clinic-sage shadow-lg md:h-full md:max-h-96">
-                  <Image
+                <div className="relative min-h-72 w-full self-stretch overflow-hidden rounded-2xl bg-clinic-sage shadow-lg md:min-h-96">
+                  <ImageWithFallback
                     src={slide.image}
                     alt={slide.headline}
                     fill
-                    priority={index === 0}
-                    className="object-cover"
+                    preload={index === 0}
                     sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover object-center"
                   />
                 </div>
               </div>

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
+import ImageWithFallback from "@/app/components/ui/ImageWithFallback";
 import { doctorsData } from "@/app/lib/data/doctors";
 import { containerVariants, cardVariants } from "@/app/lib/animations";
 import Pill from "@/app/components/ui/Pill";
@@ -53,7 +53,7 @@ export default function DoctorsSection() {
               <Link href={`/doctors/${doctor.id}`} className="block">
                 {/* Image */}
                 <div className="relative h-64 w-full overflow-hidden bg-clinic-sage/30">
-                  <Image
+                  <ImageWithFallback
                     src={doctor.image}
                     alt={doctor.name}
                     fill

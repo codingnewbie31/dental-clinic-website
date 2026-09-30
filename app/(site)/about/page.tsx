@@ -1,13 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
+import ImageWithFallback from "@/app/components/ui/ImageWithFallback";
 import Button from "@/app/components/ui/Button";
 import Card from "@/app/components/ui/Card";
 import SectionHeading from "@/app/components/ui/SectionHeading";
 import { aboutValues } from "@/app/lib/data/aboutValues";
 import { aboutStats } from "@/app/lib/data/aboutStats";
 import { doctorsData } from "@/app/lib/data/doctors";
+import ClinicPhotoCarousel from "@/app/components/ui/ClinicPhotoCarousel";
 
 const teamRoleLabels: Record<string, string> = {
   "1": "Chief Dental Surgeon",
@@ -59,9 +60,7 @@ export default function AboutPage() {
               transition={{ duration: 0.6 }}
               className="relative aspect-4/3 rounded-3xl bg-clinic-sage/40 overflow-hidden"
             >
-              <div className="absolute inset-0 flex items-center justify-center text-clinic-teal/50 font-display text-xl">
-                clinic interior photo
-              </div>
+              <ClinicPhotoCarousel />
             </motion.div>
 
             {/* Text side */}
@@ -203,7 +202,7 @@ export default function AboutPage() {
                 className="text-center p-6"
               >
                 <div className="relative aspect-square rounded-2xl overflow-hidden bg-clinic-sage/40 mb-4">
-                  <Image
+                  <ImageWithFallback
                     src={member.image}
                     alt={member.name}
                     fill

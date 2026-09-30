@@ -1,7 +1,7 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import Image from "next/image";
+import ImageWithFallback from "@/app/components/ui/ImageWithFallback";
 import { motion } from "framer-motion";
 import { doctorsData } from "@/app/lib/data/doctors";
 import Pill from "@/app/components/ui/Pill";
@@ -125,7 +125,7 @@ export default function DoctorDetailPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8">
             {/* Image */}
             <div className="relative h-80 md:h-full min-h-75 w-full overflow-hidden rounded-2xl bg-clinic-sage/30">
-              <Image
+              <ImageWithFallback
                 src={doctor.image}
                 alt={doctor.name}
                 fill
